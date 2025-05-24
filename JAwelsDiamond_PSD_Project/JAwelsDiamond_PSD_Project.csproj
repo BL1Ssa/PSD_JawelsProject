@@ -84,6 +84,7 @@
       <LastGenOutput>JawelsDatamodel.Context.cs</LastGenOutput>
       <DependentUpon>JawelsDatamodel.edmx</DependentUpon>
     </Content>
+    <Content Include="Models\JawelsDatamodel.edmx.sql" />
     <Content Include="Models\JawelsDatamodel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>JawelsDatamodel.edmx</DependentUpon>
@@ -96,6 +97,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handler\JewelHandler.cs" />
+    <Compile Include="Handler\userHandler.cs" />
     <Compile Include="Models\Cart.cs">
       <DependentUpon>JawelsDatamodel.tt</DependentUpon>
     </Compile>
@@ -174,7 +177,6 @@
   <ItemGroup>
     <Folder Include="Controller\" />
     <Folder Include="Factory\" />
-    <Folder Include="Handler\" />
     <Folder Include="Reporting\" />
     <Folder Include="Repository\" />
   </ItemGroup>

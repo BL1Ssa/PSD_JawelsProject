@@ -4,215 +4,198 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="JawelsDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BRANDON\SESI_7_PSD\JAWELSDIAMOND_PSD_PROJECT\JAWELSDIAMOND_PSD_PROJECT\APP_DATA\JAWELSDATABASE.MDF.dbo.Cart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Cart">
-          <Key>
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="JewelID" />
-            <PropertyRef Name="Quantity" />
-          </Key>
-          <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="JewelID" Type="int" Nullable="false" />
-          <Property Name="Quantity" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MsBrand">
-          <Key>
-            <PropertyRef Name="BrandID" />
-          </Key>
-          <Property Name="BrandID" Type="int" Nullable="false" />
-          <Property Name="BrandName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="BrandCountry" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="BrandClass" Type="varchar" MaxLength="20" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MsCategory">
-          <Key>
-            <PropertyRef Name="CategoryID" />
-          </Key>
-          <Property Name="CategoryID" Type="int" Nullable="false" />
-          <Property Name="CategoryName" Type="varchar" MaxLength="15" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MsJewel">
-          <Key>
-            <PropertyRef Name="JewelID" />
-          </Key>
-          <Property Name="JewelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BrandID" Type="int" Nullable="false" />
-          <Property Name="CategoryID" Type="int" Nullable="false" />
-          <Property Name="JewelName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="JewelPrice" Type="int" Nullable="false" />
-          <Property Name="JewelReleaseYear" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MsUser">
-          <Key>
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="UserPassword" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="UserEmail" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="UserDOB" Type="date" Nullable="false" />
-          <Property Name="UserGender" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="UserRole" Type="varchar" MaxLength="10" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BRANDON\SESI_7_PSD\JAWELSDIAMOND_PSD_PROJECT\JAWELSDIAMOND_PSD_PROJECT\APP_DATA\JAWELSDATABASE.MDF.dbo.TransactionDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="TransactionDetail">
-          <Key>
-            <PropertyRef Name="TransactionID" />
-            <PropertyRef Name="JewelID" />
-            <PropertyRef Name="Quantity" />
-          </Key>
-          <Property Name="TransactionID" Type="int" Nullable="false" />
-          <Property Name="JewelID" Type="int" Nullable="false" />
-          <Property Name="Quantity" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TransactionHeader">
-          <Key>
-            <PropertyRef Name="TransactionID" />
-          </Key>
-          <Property Name="TransactionID" Type="int" Nullable="false" />
-          <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="TransactionDate" Type="date" Nullable="false" />
-          <Property Name="PaymentMethod" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="TransactionStatus" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_Cart_ToTable_MsJewel">
-          <End Role="MsJewel" Type="Self.MsJewel" Multiplicity="1" />
-          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MsJewel">
-              <PropertyRef Name="JewelID" />
-            </Principal>
-            <Dependent Role="Cart">
-              <PropertyRef Name="JewelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cart_ToTable_MsUser">
-          <End Role="MsUser" Type="Self.MsUser" Multiplicity="1" />
-          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MsUser">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Cart">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MsJewel_ToTable_MsBrand">
-          <End Role="MsBrand" Type="Self.MsBrand" Multiplicity="1" />
-          <End Role="MsJewel" Type="Self.MsJewel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MsBrand">
-              <PropertyRef Name="BrandID" />
-            </Principal>
-            <Dependent Role="MsJewel">
-              <PropertyRef Name="BrandID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MsJewel_ToTable_MsCategory">
-          <End Role="MsCategory" Type="Self.MsCategory" Multiplicity="1" />
-          <End Role="MsJewel" Type="Self.MsJewel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MsCategory">
-              <PropertyRef Name="CategoryID" />
-            </Principal>
-            <Dependent Role="MsJewel">
-              <PropertyRef Name="CategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TransactionDetail_MsJewel">
-          <End Role="MsJewel" Type="Self.MsJewel" Multiplicity="1" />
-          <End Role="TransactionDetail" Type="Self.TransactionDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MsJewel">
-              <PropertyRef Name="JewelID" />
-            </Principal>
-            <Dependent Role="TransactionDetail">
-              <PropertyRef Name="JewelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TransactionDetail_TransactionHeader">
-          <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="1" />
-          <End Role="TransactionDetail" Type="Self.TransactionDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TransactionHeader">
-              <PropertyRef Name="TransactionID" />
-            </Principal>
-            <Dependent Role="TransactionDetail">
-              <PropertyRef Name="TransactionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TransactionHeader_ToTable_MsUser">
-          <End Role="MsUser" Type="Self.MsUser" Multiplicity="1" />
-          <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MsUser">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="TransactionHeader">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="JawelsDatabaseModelStoreContainer">
-          <EntitySet Name="MsBrand" EntityType="Self.MsBrand" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MsCategory" EntityType="Self.MsCategory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MsJewel" EntityType="Self.MsJewel" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MsUser" EntityType="Self.MsUser" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TransactionHeader" EntityType="Self.TransactionHeader" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cart" EntityType="Self.Cart" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Cart].[UserID] AS [UserID], 
-    [Cart].[JewelID] AS [JewelID], 
-    [Cart].[Quantity] AS [Quantity]
-    FROM [dbo].[Cart] AS [Cart]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TransactionDetail" EntityType="Self.TransactionDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TransactionDetail].[TransactionID] AS [TransactionID], 
-    [TransactionDetail].[JewelID] AS [JewelID], 
-    [TransactionDetail].[Quantity] AS [Quantity]
-    FROM [dbo].[TransactionDetail] AS [TransactionDetail]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK_Cart_ToTable_MsJewel" Association="Self.FK_Cart_ToTable_MsJewel">
-            <End Role="MsJewel" EntitySet="MsJewel" />
-            <End Role="Cart" EntitySet="Cart" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cart_ToTable_MsUser" Association="Self.FK_Cart_ToTable_MsUser">
-            <End Role="MsUser" EntitySet="MsUser" />
-            <End Role="Cart" EntitySet="Cart" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MsJewel_ToTable_MsBrand" Association="Self.FK_MsJewel_ToTable_MsBrand">
-            <End Role="MsBrand" EntitySet="MsBrand" />
-            <End Role="MsJewel" EntitySet="MsJewel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MsJewel_ToTable_MsCategory" Association="Self.FK_MsJewel_ToTable_MsCategory">
-            <End Role="MsCategory" EntitySet="MsCategory" />
-            <End Role="MsJewel" EntitySet="MsJewel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TransactionDetail_MsJewel" Association="Self.FK_TransactionDetail_MsJewel">
-            <End Role="MsJewel" EntitySet="MsJewel" />
-            <End Role="TransactionDetail" EntitySet="TransactionDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TransactionDetail_TransactionHeader" Association="Self.FK_TransactionDetail_TransactionHeader">
-            <End Role="TransactionHeader" EntitySet="TransactionHeader" />
-            <End Role="TransactionDetail" EntitySet="TransactionDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TransactionHeader_ToTable_MsUser" Association="Self.FK_TransactionHeader_ToTable_MsUser">
-            <End Role="MsUser" EntitySet="MsUser" />
-            <End Role="TransactionHeader" EntitySet="TransactionHeader" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="JawelsDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="JawelsDatabaseModelStoreContainer">
+    <EntitySet Name="MsBrands" EntityType="JawelsDatabaseModel.Store.MsBrands" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MsCategories" EntityType="JawelsDatabaseModel.Store.MsCategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MsJewels" EntityType="JawelsDatabaseModel.Store.MsJewels" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MsUsers" EntityType="JawelsDatabaseModel.Store.MsUsers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TransactionHeaders" EntityType="JawelsDatabaseModel.Store.TransactionHeaders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Carts" EntityType="JawelsDatabaseModel.Store.Carts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TransactionDetails" EntityType="JawelsDatabaseModel.Store.TransactionDetails" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_MsJewel_ToTable_MsBrand" Association="JawelsDatabaseModel.Store.FK_MsJewel_ToTable_MsBrand">
+      <End Role="MsBrand" EntitySet="MsBrands" />
+      <End Role="MsJewel" EntitySet="MsJewels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MsJewel_ToTable_MsCategory" Association="JawelsDatabaseModel.Store.FK_MsJewel_ToTable_MsCategory">
+      <End Role="MsCategory" EntitySet="MsCategories" />
+      <End Role="MsJewel" EntitySet="MsJewels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_ToTable_MsJewel" Association="JawelsDatabaseModel.Store.FK_Cart_ToTable_MsJewel">
+      <End Role="MsJewel" EntitySet="MsJewels" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionDetail_MsJewel" Association="JawelsDatabaseModel.Store.FK_TransactionDetail_MsJewel">
+      <End Role="MsJewel" EntitySet="MsJewels" />
+      <End Role="TransactionDetail" EntitySet="TransactionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_ToTable_MsUser" Association="JawelsDatabaseModel.Store.FK_Cart_ToTable_MsUser">
+      <End Role="MsUser" EntitySet="MsUsers" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionHeader_ToTable_MsUser" Association="JawelsDatabaseModel.Store.FK_TransactionHeader_ToTable_MsUser">
+      <End Role="MsUser" EntitySet="MsUsers" />
+      <End Role="TransactionHeader" EntitySet="TransactionHeaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionDetail_TransactionHeader" Association="JawelsDatabaseModel.Store.FK_TransactionDetail_TransactionHeader">
+      <End Role="TransactionHeader" EntitySet="TransactionHeaders" />
+      <End Role="TransactionDetail" EntitySet="TransactionDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="MsBrands">
+    <Key>
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="int" Nullable="false" />
+    <Property Name="BrandName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="BrandCountry" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="BrandClass" Type="varchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="MsCategories">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="CategoryName" Type="varchar" Nullable="false" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="MsJewels">
+    <Key>
+      <PropertyRef Name="JewelID" />
+    </Key>
+    <Property Name="JewelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrandID" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="JewelName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="JewelPrice" Type="int" Nullable="false" />
+    <Property Name="JewelReleaseYear" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MsUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="UserPassword" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="UserEmail" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="UserDOB" Type="datetime" Nullable="false" />
+    <Property Name="UserGender" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="UserRole" Type="varchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="TransactionHeaders">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+    <Property Name="PaymentMethod" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="TransactionStatus" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Carts">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="JewelID" />
+      <PropertyRef Name="Quantity" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="JewelID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionDetails">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+      <PropertyRef Name="JewelID" />
+      <PropertyRef Name="Quantity" />
+    </Key>
+    <Property Name="TransactionID" Type="int" Nullable="false" />
+    <Property Name="JewelID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_MsJewel_ToTable_MsBrand">
+    <End Role="MsBrand" Type="JawelsDatabaseModel.Store.MsBrands" Multiplicity="1" />
+    <End Role="MsJewel" Type="JawelsDatabaseModel.Store.MsJewels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MsBrand">
+        <PropertyRef Name="BrandID" />
+      </Principal>
+      <Dependent Role="MsJewel">
+        <PropertyRef Name="BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MsJewel_ToTable_MsCategory">
+    <End Role="MsCategory" Type="JawelsDatabaseModel.Store.MsCategories" Multiplicity="1" />
+    <End Role="MsJewel" Type="JawelsDatabaseModel.Store.MsJewels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MsCategory">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="MsJewel">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_ToTable_MsJewel">
+    <End Role="MsJewel" Type="JawelsDatabaseModel.Store.MsJewels" Multiplicity="1" />
+    <End Role="Cart" Type="JawelsDatabaseModel.Store.Carts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MsJewel">
+        <PropertyRef Name="JewelID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="JewelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionDetail_MsJewel">
+    <End Role="MsJewel" Type="JawelsDatabaseModel.Store.MsJewels" Multiplicity="1" />
+    <End Role="TransactionDetail" Type="JawelsDatabaseModel.Store.TransactionDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MsJewel">
+        <PropertyRef Name="JewelID" />
+      </Principal>
+      <Dependent Role="TransactionDetail">
+        <PropertyRef Name="JewelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_ToTable_MsUser">
+    <End Role="MsUser" Type="JawelsDatabaseModel.Store.MsUsers" Multiplicity="1" />
+    <End Role="Cart" Type="JawelsDatabaseModel.Store.Carts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MsUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionHeader_ToTable_MsUser">
+    <End Role="MsUser" Type="JawelsDatabaseModel.Store.MsUsers" Multiplicity="1" />
+    <End Role="TransactionHeader" Type="JawelsDatabaseModel.Store.TransactionHeaders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MsUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionHeader">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionDetail_TransactionHeader">
+    <End Role="TransactionHeader" Type="JawelsDatabaseModel.Store.TransactionHeaders" Multiplicity="1" />
+    <End Role="TransactionDetail" Type="JawelsDatabaseModel.Store.TransactionDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionHeader">
+        <PropertyRef Name="TransactionID" />
+      </Principal>
+      <Dependent Role="TransactionDetail">
+        <PropertyRef Name="TransactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JawelsDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -424,83 +407,82 @@ warning 6002: The table/view 'C:\USERS\BRANDON\SESI_7_PSD\JAWELSDIAMOND_PSD_PROJ
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="JawelsDatabaseModelStoreContainer" CdmEntityContainer="JawelsDatabaseEntities">
-          <EntitySetMapping Name="MsBrands">
-            <EntityTypeMapping TypeName="JawelsDatabaseModel.MsBrand">
-              <MappingFragment StoreEntitySet="MsBrand">
-                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
-                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
-                <ScalarProperty Name="BrandCountry" ColumnName="BrandCountry" />
-                <ScalarProperty Name="BrandClass" ColumnName="BrandClass" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MsCategories">
-            <EntityTypeMapping TypeName="JawelsDatabaseModel.MsCategory">
-              <MappingFragment StoreEntitySet="MsCategory">
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MsJewels">
-            <EntityTypeMapping TypeName="JawelsDatabaseModel.MsJewel">
-              <MappingFragment StoreEntitySet="MsJewel">
-                <ScalarProperty Name="JewelID" ColumnName="JewelID" />
-                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="JewelName" ColumnName="JewelName" />
-                <ScalarProperty Name="JewelPrice" ColumnName="JewelPrice" />
-                <ScalarProperty Name="JewelReleaseYear" ColumnName="JewelReleaseYear" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MsUsers">
-            <EntityTypeMapping TypeName="JawelsDatabaseModel.MsUser">
-              <MappingFragment StoreEntitySet="MsUser">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
-                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
-                <ScalarProperty Name="UserDOB" ColumnName="UserDOB" />
-                <ScalarProperty Name="UserGender" ColumnName="UserGender" />
-                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TransactionHeaders">
-            <EntityTypeMapping TypeName="JawelsDatabaseModel.TransactionHeader">
-              <MappingFragment StoreEntitySet="TransactionHeader">
-                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
-                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
-                <ScalarProperty Name="TransactionStatus" ColumnName="TransactionStatus" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Carts">
-            <EntityTypeMapping TypeName="JawelsDatabaseModel.Cart">
-              <MappingFragment StoreEntitySet="Cart">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="JewelID" ColumnName="JewelID" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TransactionDetails">
-            <EntityTypeMapping TypeName="JawelsDatabaseModel.TransactionDetail">
-              <MappingFragment StoreEntitySet="TransactionDetail">
-                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
-                <ScalarProperty Name="JewelID" ColumnName="JewelID" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JawelsDatabaseModelStoreContainer" CdmEntityContainer="JawelsDatabaseEntities">
+    <EntitySetMapping Name="MsBrands">
+      <EntityTypeMapping TypeName="IsTypeOf(JawelsDatabaseModel.MsBrand)">
+        <MappingFragment StoreEntitySet="MsBrands">
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="BrandCountry" ColumnName="BrandCountry" />
+          <ScalarProperty Name="BrandClass" ColumnName="BrandClass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MsCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(JawelsDatabaseModel.MsCategory)">
+        <MappingFragment StoreEntitySet="MsCategories">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MsJewels">
+      <EntityTypeMapping TypeName="IsTypeOf(JawelsDatabaseModel.MsJewel)">
+        <MappingFragment StoreEntitySet="MsJewels">
+          <ScalarProperty Name="JewelID" ColumnName="JewelID" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="JewelName" ColumnName="JewelName" />
+          <ScalarProperty Name="JewelPrice" ColumnName="JewelPrice" />
+          <ScalarProperty Name="JewelReleaseYear" ColumnName="JewelReleaseYear" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MsUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(JawelsDatabaseModel.MsUser)">
+        <MappingFragment StoreEntitySet="MsUsers">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="UserDOB" ColumnName="UserDOB" />
+          <ScalarProperty Name="UserGender" ColumnName="UserGender" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionHeaders">
+      <EntityTypeMapping TypeName="IsTypeOf(JawelsDatabaseModel.TransactionHeader)">
+        <MappingFragment StoreEntitySet="TransactionHeaders">
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="TransactionStatus" ColumnName="TransactionStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carts">
+      <EntityTypeMapping TypeName="IsTypeOf(JawelsDatabaseModel.Cart)">
+        <MappingFragment StoreEntitySet="Carts">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="JewelID" ColumnName="JewelID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionDetails">
+      <EntityTypeMapping TypeName="IsTypeOf(JawelsDatabaseModel.TransactionDetail)">
+        <MappingFragment StoreEntitySet="TransactionDetails">
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="JewelID" ColumnName="JewelID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -514,7 +496,7 @@ warning 6002: The table/view 'C:\USERS\BRANDON\SESI_7_PSD\JAWELSDIAMOND_PSD_PROJ
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
