@@ -26,5 +26,21 @@ namespace JAwelsDiamond_PSD_Project.Handler
 			bool response = repo.updateTransactionHeader(th);
 			return response;
 		}
+
+		public bool transactionExists(int id)
+		{
+            TransactionHeader th = repo.getTransactionHeader(id);
+			if(th == null)
+			{
+				return false;
+			}
+			return true;
+        }
+
+		public List<TransactionHeader> getAllTransactions(int userId)
+		{
+			List<TransactionHeader> allTh = repo.getAllTransactions(userId);
+			return allTh;
+		}
 	}
 }

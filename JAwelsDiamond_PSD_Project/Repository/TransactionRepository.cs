@@ -28,8 +28,8 @@ namespace JAwelsDiamond_PSD_Project.Repository
 			db.SaveChanges();
 		}
 
-		//read
-		public List<TransactionHeader> getAllTransactions(int? userId)
+        //read
+        public List<TransactionHeader> getAllTransactions(int? userId = null)
 		{
 			if (userId != null)
 			{
