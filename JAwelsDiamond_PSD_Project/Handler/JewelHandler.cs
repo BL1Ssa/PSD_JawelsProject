@@ -29,14 +29,18 @@ namespace JAwelsDiamond_PSD_Project.Handler
         public bool ValidateReleaseYear(string yearStr)
         {
             int year;
-            // Accepts years >= 1900 and <= current year
             return int.TryParse(yearStr, out year) && year >= 1900 && year <= DateTime.Now.Year;
         }
 
         public bool AddJewel(string name, string categoryId, string brandId, string price, string releaseYear, out string errorMessage)
         {
-            // Passes all parameters as string, as expected by JewelRepository
             return repo.AddJewel(name, categoryId, brandId, price, releaseYear, out errorMessage);
+        }
+
+        public bool ValidatePrice(string priceStr)
+        {
+            int price;
+            return int.TryParse(priceStr, out price) && price > 25;
         }
     }
 }

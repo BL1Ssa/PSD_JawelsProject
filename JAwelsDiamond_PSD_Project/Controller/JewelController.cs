@@ -32,5 +32,10 @@ namespace JAwelsDiamond_PSD_Project.Controller
         {
             return handler.AddJewel(name, categoryId, brandId, price, releaseYear, out errorMessage);
         }
+
+        public bool ValidatePrice(string priceStr)
+        {
+            return handler.ValidatePrice(priceStr);
+        }
     }
 }

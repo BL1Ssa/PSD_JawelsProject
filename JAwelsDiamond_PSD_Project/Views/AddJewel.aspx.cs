@@ -46,6 +46,13 @@ namespace JAwelsDiamond_PSD_Project.Views
         {
             if (Page.IsValid)
             {
+                if (!jewelController.ValidatePrice(txtPrice.Text.Trim()))
+                {
+                    lblError.Text = "Error: Price must be a number and more than $25.";
+                    lblError.Visible = true;
+                    return;
+                }
+
                 string errorMessage;
                 bool success = jewelController.AddJewel(
                     txtJewelName.Text.Trim(),
