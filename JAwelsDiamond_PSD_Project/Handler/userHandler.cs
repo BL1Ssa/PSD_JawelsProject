@@ -1,27 +1,17 @@
-﻿using JAwelsDiamond_PSD_Project.Models;
-using JAwelsDiamond_PSD_Project.Repository;
+﻿using JAwelsDiamond_PSD_Project.Repository;
+using JAwelsDiamond_PSD_Project.Models;
 
-namespace JAwelsDiamond_PSD_Project.Handler
+public class userHandler
 {
-    public class userHandler
+    private UserRepository repo = new UserRepository();
+
+    public MsUser Login(string email, string password, out string errorMessage)
     {
-        private UserRepository repo = new UserRepository();
+        return repo.Login(email, password, out errorMessage);
+    }
 
-        public MsUser Login(string email, string password)
-        {
-            var user = repo.GetUserByEmail(email);
-            if (user != null && user.UserPassword == password)
-            {
-                return user;
-            }
-            return null;
-        }
-
-        public MsUser GetUserById(string userId)
-        {
-            return repo.GetUserById(userId);
-        }
-
-        
+    public MsUser GetUserById(string userId)
+    {
+        return repo.GetUserById(userId);
     }
 }

@@ -9,23 +9,20 @@ namespace JAwelsDiamond_PSD_Project.Controller
 
         public MsUser Login(string email, string password, out string errorMessage)
         {
-            errorMessage = "";
-            if (string.IsNullOrEmpty(email))
+            errorMessage = string.Empty;
+
+            if (string.IsNullOrWhiteSpace(email))
             {
                 errorMessage = "Email is required.";
                 return null;
             }
-            if (string.IsNullOrEmpty(password))
+            if (string.IsNullOrWhiteSpace(password))
             {
                 errorMessage = "Password is required.";
                 return null;
             }
 
-            var user = handler.Login(email, password);
-            if (user == null)
-            {
-                errorMessage = "Incorrect email or password.";
-            }
+            var user = handler.Login(email, password, out errorMessage);
             return user;
         }
 

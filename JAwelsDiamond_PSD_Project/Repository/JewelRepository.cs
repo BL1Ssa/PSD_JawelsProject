@@ -1,4 +1,5 @@
 ﻿using JAwelsDiamond_PSD_Project.Models;
+using JAwelsDiamond_PSD_Project.Factory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,69 +8,105 @@ namespace JAwelsDiamond_PSD_Project.Repository
 {
     public class JewelRepository
     {
-        private readonly JawelsdatabaseEntities2 db = new JawelsdatabaseEntities2();
+        public List<MsCategory> GetCategories()
+        {
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                return db.MsCategories.ToList();
+            }
+        }
 
-        public bool AddJewel(MsJewel newJewel)
+        public List<MsBrand> GetBrands()
+        {
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                return db.MsBrands.ToList();
+            }
+        }
+
+        public bool AddJewel(string name, string categoryId, string brandId, string price, string releaseYear, out string errorMessage)
         {
             try
             {
-                db.MsJewels.Add(newJewel);
-                db.SaveChanges();
+                using (var db = new JawelsdatabaseEntities2())
+                {
+                    var jewel = JewelFactory.Create(name, categoryId, brandId, price, releaseYear);
+                    db.MsJewels.Add(jewel);
+                    db.SaveChanges();
+                }
+                errorMessage = null;
                 return true;
             }
-            catch
+            catch (System.Exception ex)
             {
+                errorMessage = ex.Message;
                 return false;
             }
         }
 
         public List<MsJewel> GetAllJewels()
         {
-            return db.MsJewels.ToList();
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                return db.MsJewels.ToList();
+            }
         }
 
         public MsJewel GetJewelById(int id)
         {
-            return db.MsJewels.Find(id);
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                return db.MsJewels.Find(id);
+            }
         }
 
         public bool UpdateJewel(MsJewel updatedJewel)
         {
-            MsJewel existing = db.MsJewels.Find(updatedJewel.JewelID);
-            if (existing != null)
+            using (var db = new JawelsdatabaseEntities2())
             {
-                existing.JewelName = updatedJewel.JewelName;
-                existing.JewelPrice = updatedJewel.JewelPrice;
-                existing.JewelReleaseYear = updatedJewel.JewelReleaseYear;
-                existing.BrandID = updatedJewel.BrandID;
-                existing.CategoryID = updatedJewel.CategoryID;
-                db.SaveChanges();
-                return true;
+                MsJewel existing = db.MsJewels.Find(updatedJewel.JewelID);
+                if (existing != null)
+                {
+                    existing.JewelName = updatedJewel.JewelName;
+                    existing.JewelPrice = updatedJewel.JewelPrice;
+                    existing.JewelReleaseYear = updatedJewel.JewelReleaseYear;
+                    existing.BrandID = updatedJewel.BrandID;
+                    existing.CategoryID = updatedJewel.CategoryID;
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
             }
-            return false;
         }
+
         public bool DeleteJewel(int id)
         {
-            var jewel = db.MsJewels.Find(id);
-            if (jewel != null)
+            using (var db = new JawelsdatabaseEntities2())
             {
-                db.MsJewels.Remove(jewel);
-                db.SaveChanges();
-                return true;
+                var jewel = db.MsJewels.Find(id);
+                if (jewel != null)
+                {
+                    db.MsJewels.Remove(jewel);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
             }
-            return false;
         }
 
         public int getLastId()
         {
-            MsJewel lastJewel = (from j in db.MsJewels select j).LastOrDefault();
-            if(lastJewel == null)
+            using (var db = new JawelsdatabaseEntities2())
             {
-                return 1;
-            }
-            else
-            {
-                return lastJewel.JewelID + 1;
+                MsJewel lastJewel = (from j in db.MsJewels select j).LastOrDefault();
+                if (lastJewel == null)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return lastJewel.JewelID + 1;
+                }
             }
         }
     }

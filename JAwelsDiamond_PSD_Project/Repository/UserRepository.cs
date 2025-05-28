@@ -1,10 +1,26 @@
 ﻿using JAwelsDiamond_PSD_Project.Models;
+using JAwelsDiamond_PSD_Project.Factory;
 using System.Linq;
 
 namespace JAwelsDiamond_PSD_Project.Repository
 {
     public class UserRepository
     {
+        public MsUser Login(string email, string password, out string errorMessage)
+        {
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                var user = db.MsUsers.FirstOrDefault(u => u.UserEmail == email && u.UserPassword == password);
+                if (user != null)
+                {
+                    errorMessage = null;
+                    return user;
+                }
+                errorMessage = "Invalid email or password.";
+                return null;
+            }
+        }
+
         public MsUser GetUserByEmail(string email)
         {
             using (var db = new JawelsdatabaseEntities2())
@@ -17,7 +33,12 @@ namespace JAwelsDiamond_PSD_Project.Repository
         {
             using (var db = new JawelsdatabaseEntities2())
             {
-                return db.MsUsers.FirstOrDefault(u => u.UserID.ToString() == userId);
+                int id;
+                if (int.TryParse(userId, out id))
+                {
+                    return db.MsUsers.FirstOrDefault(u => u.UserID == id);
+                }
+                return null;
             }
         }
 

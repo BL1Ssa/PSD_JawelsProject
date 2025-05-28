@@ -9,6 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Button ID="btnGoToAddJewel" runat="server" Text="Add Jewel" PostBackUrl="~/Views/AddJewel.aspx" />
         </div>
     </form>
 </body>
