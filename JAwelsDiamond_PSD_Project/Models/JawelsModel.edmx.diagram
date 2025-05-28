@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2a1ae5cb385c4d409a2eedc5c535bf1e" Name="Diagram1">
+        <EntityTypeShape EntityType="JawelsDatabaseModel.Cart" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JawelsDatabaseModel.MsBrand" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JawelsDatabaseModel.MsCategory" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="JawelsDatabaseModel.MsJewel" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JawelsDatabaseModel.MsUser" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JawelsDatabaseModel.TransactionDetail" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JawelsDatabaseModel.TransactionHeader" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="JawelsDatabaseModel.FK_Cart_ToTable_MsJewel" ManuallyRouted="false" />
+        <AssociationConnector Association="JawelsDatabaseModel.FK_Cart_ToTable_MsUser" ManuallyRouted="false" />
+        <AssociationConnector Association="JawelsDatabaseModel.FK_MsJewel_ToTable_MsBrand" ManuallyRouted="false" />
+        <AssociationConnector Association="JawelsDatabaseModel.FK_MsJewel_ToTable_MsCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="JawelsDatabaseModel.FK_TransactionDetail_MsJewel" ManuallyRouted="false" />
+        <AssociationConnector Association="JawelsDatabaseModel.FK_TransactionHeader_ToTable_MsUser" ManuallyRouted="false" />
+        <AssociationConnector Association="JawelsDatabaseModel.FK_TransactionDetail_TransactionHeader" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

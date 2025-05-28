@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using JAwelsDiamond_PSD_Project.Models;
+using System;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace JAwelsDiamond_PSD_Project.Views
 {
@@ -11,7 +11,75 @@ namespace JAwelsDiamond_PSD_Project.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (ScriptManager.ScriptResourceMapping.GetDefinition("jquery") == null)
+            {
+                ScriptManager.ScriptResourceMapping.AddDefinition(
+                    "jquery",
+                    new ScriptResourceDefinition
+                    {
+                        Path = "~/Scripts/jquery-3.7.1.min.js",
+                        DebugPath = "~/Scripts/jquery-3.7.1.js",
+                        CdnPath = "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js",
+                        CdnDebugPath = "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.js"
+                    }
+                );
+            }
 
+            if (Session["UserID"] == null && Request.Cookies["UserLogin"] != null)
+            {
+                string userId = Request.Cookies["UserLogin"]["UserID"];
+                using (var db = new JawelsDatabaseEntities1())
+                {
+                    var user = db.MsUsers.FirstOrDefault(u => u.UserID.ToString() == userId);
+                    if (user != null)
+                    {
+                        Session["UserID"] = user.UserID;
+                        Session["UserName"] = user.UserName;
+                        Session["UserRole"] = user.UserRole;
+                    }
+                }
+            }
+
+            if (Session["UserID"] != null)
+            {
+                Response.Redirect("HomePage.aspx");
+            }
+        }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            string email = txtEmail.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            using (var db = new JawelsDatabaseEntities1())
+            {
+                var user = db.MsUsers
+                    .FirstOrDefault(u => u.UserEmail == email && u.UserPassword == password);
+
+                if (user != null)
+                {
+                    
+                    Session["UserID"] = user.UserID;
+                    Session["UserName"] = user.UserName;
+                    Session["UserRole"] = user.UserRole;
+
+                    
+                    if (chkRememberMe.Checked)
+                    {
+                        HttpCookie cookie = new HttpCookie("UserLogin");
+                        cookie.Values["UserID"] = user.UserID.ToString();
+                        cookie.Expires = DateTime.Now.AddDays(1); 
+                        Response.Cookies.Add(cookie);
+                    }
+
+                    Response.Redirect("HomePage.aspx");
+                }
+                else
+                {
+                    lblError.Text = "Incorrect email or password.";
+                    lblError.Visible = true;
+                }
+            }
         }
     }
 }
