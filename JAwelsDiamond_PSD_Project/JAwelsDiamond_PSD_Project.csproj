@@ -95,6 +95,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\OrderController.cs" />
+    <Compile Include="Factory\JewelFactory.cs" />
+    <Compile Include="Factory\TransactionDetailFactory.cs" />
+    <Compile Include="Factory\TransactionHeaderFactory.cs" />
+    <Compile Include="Factory\UserFactory.cs" />
+    <Compile Include="Handler\JewelHandler.cs" />
+    <Compile Include="Handler\OrderHandler.cs" />
+    <Compile Include="Handler\userHandler.cs" />
     <Compile Include="Models\Cart.cs">
       <DependentUpon>JawelsModel.tt</DependentUpon>
     </Compile>
@@ -171,9 +179,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="Factory\" />
-    <Folder Include="Handler\" />
     <Folder Include="Reporting\" />
     <Folder Include="Repository\" />
     <Folder Include="Styles\" />

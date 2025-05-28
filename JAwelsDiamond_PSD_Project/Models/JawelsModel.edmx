@@ -197,6 +197,22 @@
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionDetail_MsJewel" Association="Self.FK_TransactionDetail_MsJewel">
+            <End Role="MsJewel" EntitySet="MsJewel" />
+            <End Role="TransactionDetail" EntitySet="TransactionDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionDetail_TransactionHeader" Association="Self.FK_TransactionDetail_TransactionHeader">
+            <End Role="TransactionHeader" EntitySet="TransactionHeader" />
+            <End Role="TransactionDetail" EntitySet="TransactionDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionHeader_ToTable_MsUser" Association="Self.FK_TransactionHeader_ToTable_MsUser">
+            <End Role="MsUser" EntitySet="MsUser" />
+            <End Role="TransactionHeader" EntitySet="TransactionHeader" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JawelsDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -392,22 +408,6 @@
             <End Role="MsJewels" EntitySet="MsJewels" />
           </AssociationSet>
           <AssociationSet Name="FK_TransactionDetail_MsJewel" Association="Self.FK_TransactionDetail_MsJewel">
-            <End Role="MsJewels" EntitySet="MsJewels" />
-            <End Role="TransactionDetails" EntitySet="TransactionDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TransactionHeader_ToTable_MsUser" Association="Self.FK_TransactionHeader_ToTable_MsUser">
-            <End Role="MsUsers" EntitySet="MsUsers" />
-            <End Role="TransactionHeaders" EntitySet="TransactionHeaders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TransactionDetail_TransactionHeader" Association="Self.FK_TransactionDetail_TransactionHeader">
-            <End Role="TransactionHeaders" EntitySet="TransactionHeaders" />
-            <End Role="TransactionDetails" EntitySet="TransactionDetails" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
-    </edmx:ConceptualModels>
-    <!-- C-S mapping content -->
-    <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="JawelsDatabaseModelStoreContainer" CdmEntityContainer="JawelsDatabaseEntities1">
           <EntitySetMapping Name="Carts">
@@ -485,6 +485,22 @@
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionDetails">
+            <EntityTypeMapping TypeName="JawelsDatabaseModel.TransactionDetail">
+              <MappingFragment StoreEntitySet="TransactionDetail">
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="JewelID" ColumnName="JewelID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -498,7 +514,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
