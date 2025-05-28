@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JAwelsDiamond_PSD_Project.Controller;
+using JAwelsDiamond_PSD_Project.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +11,19 @@ namespace JAwelsDiamond_PSD_Project.Views
 {
 	public partial class MyOrdersPage : System.Web.UI.Page
 	{
+		OrderController controller = new OrderController();
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			int id = int.Parse(Request.QueryString["id"]);
+			List<TransactionHeader> data = controller.getAllTransaction(id);
 
+			OrdersGV.DataSource = data;
+
+			
+
+
+
+			OrdersGV.DataBind();
 		}
 	}
 }
