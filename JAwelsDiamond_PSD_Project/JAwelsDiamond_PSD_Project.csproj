@@ -84,6 +84,7 @@
       <LastGenOutput>JawelsDatamodel.Context.cs</LastGenOutput>
       <DependentUpon>JawelsDatamodel.edmx</DependentUpon>
     </Content>
+    <Content Include="Models\JawelsDatamodel.edmx.sql" />
     <Content Include="Models\JawelsDatamodel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>JawelsDatamodel.edmx</DependentUpon>
@@ -92,10 +93,19 @@
     <Content Include="Styles\Homepage.css" />
     <Content Include="Views\Homepage.aspx" />
     <Content Include="Views\LoginPage.aspx" />
+    <Content Include="Views\MyOrdersPage.aspx" />
     <Content Include="Views\RegisterPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\OrderController.cs" />
+    <Compile Include="Factory\JewelFactory.cs" />
+    <Compile Include="Factory\TransactionDetailFactory.cs" />
+    <Compile Include="Factory\TransactionHeaderFactory.cs" />
+    <Compile Include="Factory\UserFactory.cs" />
+    <Compile Include="Handler\JewelHandler.cs" />
+    <Compile Include="Handler\OrderHandler.cs" />
+    <Compile Include="Handler\userHandler.cs" />
     <Compile Include="Models\Cart.cs">
       <DependentUpon>JawelsDatamodel.tt</DependentUpon>
     </Compile>
@@ -133,6 +143,9 @@
       <DependentUpon>JawelsDatamodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\JewelRepository.cs" />
+    <Compile Include="Repository\TransactionRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Views\Homepage.aspx.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -146,6 +159,13 @@
     </Compile>
     <Compile Include="Views\LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyOrdersPage.aspx.cs">
+      <DependentUpon>MyOrdersPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\MyOrdersPage.aspx.designer.cs">
+      <DependentUpon>MyOrdersPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterPage.aspx.cs">
       <DependentUpon>RegisterPage.aspx</DependentUpon>
@@ -172,11 +192,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="Factory\" />
-    <Folder Include="Handler\" />
     <Folder Include="Reporting\" />
-    <Folder Include="Repository\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
