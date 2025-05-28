@@ -7,7 +7,7 @@ namespace JAwelsDiamond_PSD_Project.Repository
 {
     public class JewelRepository
     {
-        private readonly JawelsDatabaseEntities db = new JawelsDatabaseEntities();
+        private readonly JawelsdatabaseEntities2 db = new JawelsdatabaseEntities2();
 
         public bool AddJewel(MsJewel newJewel)
         {

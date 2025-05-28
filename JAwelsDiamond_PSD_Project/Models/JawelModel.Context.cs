@@ -13,10 +13,10 @@ namespace JAwelsDiamond_PSD_Project.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class JawelsDatabaseEntities1 : DbContext
+    public partial class JawelsdatabaseEntities2 : DbContext
     {
-        public JawelsDatabaseEntities1()
-            : base("name=JawelsDatabaseEntities1")
+        public JawelsdatabaseEntities2()
+            : base("name=JawelsdatabaseEntities2")
         {
         }
     

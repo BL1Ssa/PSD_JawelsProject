@@ -1,14 +1,14 @@
-﻿using JAwelsDiamond_PSD_Project.Models;
+﻿using JAwelsDiamond_PSD_Project.Controller;
 using System;
-using System.Linq;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 
 namespace JAwelsDiamond_PSD_Project.Views
 {
     public partial class LoginPage : System.Web.UI.Page
     {
+        private UserController userController = new UserController();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (ScriptManager.ScriptResourceMapping.GetDefinition("jquery") == null)
@@ -28,15 +28,12 @@ namespace JAwelsDiamond_PSD_Project.Views
             if (Session["UserID"] == null && Request.Cookies["UserLogin"] != null)
             {
                 string userId = Request.Cookies["UserLogin"]["UserID"];
-                using (var db = new JawelsDatabaseEntities1())
+                var user = userController.GetUserById(userId);
+                if (user != null)
                 {
-                    var user = db.MsUsers.FirstOrDefault(u => u.UserID.ToString() == userId);
-                    if (user != null)
-                    {
-                        Session["UserID"] = user.UserID;
-                        Session["UserName"] = user.UserName;
-                        Session["UserRole"] = user.UserRole;
-                    }
+                    Session["UserID"] = user.UserID;
+                    Session["UserName"] = user.UserName;
+                    Session["UserRole"] = user.UserRole;
                 }
             }
 
@@ -51,34 +48,29 @@ namespace JAwelsDiamond_PSD_Project.Views
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            using (var db = new JawelsDatabaseEntities1())
+            string errorMessage;
+            var user = userController.Login(email, password, out errorMessage);
+
+            if (user != null)
             {
-                var user = db.MsUsers
-                    .FirstOrDefault(u => u.UserEmail == email && u.UserPassword == password);
+                Session["UserID"] = user.UserID;
+                Session["UserName"] = user.UserName;
+                Session["UserRole"] = user.UserRole;
 
-                if (user != null)
+                if (chkRememberMe.Checked)
                 {
-                    
-                    Session["UserID"] = user.UserID;
-                    Session["UserName"] = user.UserName;
-                    Session["UserRole"] = user.UserRole;
-
-                    
-                    if (chkRememberMe.Checked)
-                    {
-                        HttpCookie cookie = new HttpCookie("UserLogin");
-                        cookie.Values["UserID"] = user.UserID.ToString();
-                        cookie.Expires = DateTime.Now.AddDays(1); 
-                        Response.Cookies.Add(cookie);
-                    }
-
-                    Response.Redirect("HomePage.aspx");
+                    HttpCookie cookie = new HttpCookie("UserLogin");
+                    cookie.Values["UserID"] = user.UserID.ToString();
+                    cookie.Expires = DateTime.Now.AddDays(1);
+                    Response.Cookies.Add(cookie);
                 }
-                else
-                {
-                    lblError.Text = "Incorrect email or password.";
-                    lblError.Visible = true;
-                }
+
+                Response.Redirect("HomePage.aspx");
+            }
+            else
+            {
+                lblError.Text = errorMessage;
+                lblError.Visible = true;
             }
         }
     }

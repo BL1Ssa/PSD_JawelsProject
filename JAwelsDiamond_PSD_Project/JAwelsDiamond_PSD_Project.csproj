@@ -79,23 +79,23 @@
     <Content Include="App_Data\JawelsDatabase_log.ldf">
       <DependentUpon>JawelsDatabase.mdf</DependentUpon>
     </Content>
-    <Content Include="Models\JawelsModel.Context.tt">
+    <Content Include="Models\JawelModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JawelsModel.edmx</DependentUpon>
-      <LastGenOutput>JawelsModel.Context.cs</LastGenOutput>
+      <DependentUpon>JawelModel.edmx</DependentUpon>
+      <LastGenOutput>JawelModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\JawelsModel.tt">
+    <Content Include="Models\JawelModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JawelsModel.edmx</DependentUpon>
-      <LastGenOutput>JawelsModel.cs</LastGenOutput>
+      <DependentUpon>JawelModel.edmx</DependentUpon>
+      <LastGenOutput>JawelModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\GitTest.aspx" />
     <Content Include="Views\LoginPage.aspx" />
     <Content Include="Views\HomePage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\OrderController.cs" />
+    <Compile Include="Controller\UserController.cs" />
     <Compile Include="Factory\JewelFactory.cs" />
     <Compile Include="Factory\TransactionDetailFactory.cs" />
     <Compile Include="Factory\TransactionHeaderFactory.cs" />
@@ -104,49 +104,45 @@
     <Compile Include="Handler\OrderHandler.cs" />
     <Compile Include="Handler\userHandler.cs" />
     <Compile Include="Models\Cart.cs">
-      <DependentUpon>JawelsModel.tt</DependentUpon>
+      <DependentUpon>JawelModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\JawelsModel.Context.cs">
+    <Compile Include="Models\JawelModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JawelsModel.Context.tt</DependentUpon>
+      <DependentUpon>JawelModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\JawelsModel.cs">
+    <Compile Include="Models\JawelModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JawelsModel.tt</DependentUpon>
+      <DependentUpon>JawelModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\JawelsModel.Designer.cs">
+    <Compile Include="Models\JawelModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JawelsModel.edmx</DependentUpon>
+      <DependentUpon>JawelModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\MsBrand.cs">
-      <DependentUpon>JawelsModel.tt</DependentUpon>
+      <DependentUpon>JawelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MsCategory.cs">
-      <DependentUpon>JawelsModel.tt</DependentUpon>
+      <DependentUpon>JawelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MsJewel.cs">
-      <DependentUpon>JawelsModel.tt</DependentUpon>
+      <DependentUpon>JawelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MsUser.cs">
-      <DependentUpon>JawelsModel.tt</DependentUpon>
+      <DependentUpon>JawelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TransactionDetail.cs">
-      <DependentUpon>JawelsModel.tt</DependentUpon>
+      <DependentUpon>JawelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TransactionHeader.cs">
-      <DependentUpon>JawelsModel.tt</DependentUpon>
+      <DependentUpon>JawelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\GitTest.aspx.cs">
-      <DependentUpon>GitTest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\GitTest.aspx.designer.cs">
-      <DependentUpon>GitTest.aspx</DependentUpon>
-    </Compile>
+    <Compile Include="Repository\JewelRepository.cs" />
+    <Compile Include="Repository\TransactionRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Views\LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -163,12 +159,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\JawelsModel.edmx">
+    <EntityDeploy Include="Models\JawelModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>JawelsModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>JawelModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\JawelsModel.edmx.diagram">
-      <DependentUpon>JawelsModel.edmx</DependentUpon>
+    <Content Include="Models\JawelModel.edmx.diagram">
+      <DependentUpon>JawelModel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -180,7 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Reporting\" />
-    <Folder Include="Repository\" />
     <Folder Include="Styles\" />
   </ItemGroup>
   <ItemGroup>

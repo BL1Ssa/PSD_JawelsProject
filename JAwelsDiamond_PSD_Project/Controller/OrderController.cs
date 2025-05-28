@@ -1,4 +1,4 @@
-﻿using JAwelsDiamond_PSD_Project.Handler;
+﻿/*using JAwelsDiamond_PSD_Project.Handler;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,4 +10,4 @@ namespace JAwelsDiamond_PSD_Project.Controller
 	{
 		OrderHandler handler = new OrderHandler();
 	}
-}
+}*/
