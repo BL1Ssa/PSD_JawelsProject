@@ -1,22 +1,19 @@
-﻿using JAwelsDiamond_PSD_Project.Handler;
+﻿using jawelsdiamond_psd_project.handler;
 using JAwelsDiamond_PSD_Project.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace JAwelsDiamond_PSD_Project.Controller
 {
 	public class OrderController
 	{
-		OrderHandler handler = new OrderHandler();
+		orderhandler handler = new orderhandler();
 
 		public bool confirmPackage(int id)
 		{
-			bool exists = handler.transactionExists(id);
+			bool exists = handler.transactionexists(id);
 			if (exists)
 			{
-				handler.confirmPackage(id);
+				handler.confirmpackage(id);
 				return true;
 			}
 			return false;
@@ -24,10 +21,10 @@ namespace JAwelsDiamond_PSD_Project.Controller
 
         public bool rejectPackage(int id)
         {
-            bool exists = handler.transactionExists(id);
+            bool exists = handler.transactionexists(id);
             if (exists)
             {
-                handler.rejectPackage(id);
+                handler.rejectpackage(id);
                 return true;
             }
             return false;
@@ -35,7 +32,7 @@ namespace JAwelsDiamond_PSD_Project.Controller
 
 		public List<TransactionHeader> getAllTransaction(int id)
 		{
-			return handler.getAllTransactions(id);
+			return handler.getalltransactions(id);
 		}
 
     }

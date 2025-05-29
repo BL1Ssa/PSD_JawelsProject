@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MyOrdersPage.aspx.cs" Inherits="JAwelsDiamond_PSD_Project.Views.MyOrdersPage" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MyOrdersPage.aspx.cs" Inherits="JAwelsDiamond_PSD_Project.Views.MyOrdersPage" %>
 
 <!DOCTYPE html>
 
