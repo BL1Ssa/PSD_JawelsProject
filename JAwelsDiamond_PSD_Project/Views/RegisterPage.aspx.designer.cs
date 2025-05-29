@@ -11,11 +11,7 @@ namespace JAwelsDiamond_PSD_Project.Views
 {
 
 
-<<<<<<< HEAD
-    public partial class RegisterPage
-=======
     public partial class Register
->>>>>>> alvin
     {
 
         /// <summary>
@@ -28,291 +24,129 @@ namespace JAwelsDiamond_PSD_Project.Views
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-<<<<<<< HEAD
-        /// ValidationSummary1 control.
-=======
         /// emaillbl control.
->>>>>>> alvin
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
-
-        /// <summary>
-        /// lblError control.
-=======
         protected global::System.Web.UI.WebControls.Label emaillbl;
 
         /// <summary>
         /// emailtb control.
->>>>>>> alvin
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.Label lblError;
-
-        /// <summary>
-        /// txtEmail control.
-=======
         protected global::System.Web.UI.WebControls.TextBox emailtb;
 
         /// <summary>
         /// namelbl control.
->>>>>>> alvin
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
-
-        /// <summary>
-        /// RequiredFieldValidatorEmail control.
-=======
         protected global::System.Web.UI.WebControls.Label namelbl;
 
         /// <summary>
         /// nametb control.
->>>>>>> alvin
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorEmail;
-
-        /// <summary>
-        /// RegexEmail control.
-=======
         protected global::System.Web.UI.WebControls.TextBox nametb;
 
         /// <summary>
         /// passwordlbl control.
->>>>>>> alvin
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegexEmail;
-
-        /// <summary>
-        /// CustomEmail control.
-=======
         protected global::System.Web.UI.WebControls.Label passwordlbl;
 
         /// <summary>
         /// passwordtb control.
->>>>>>> alvin
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.CustomValidator CustomEmail;
-
-        /// <summary>
-        /// txtUsername control.
-=======
         protected global::System.Web.UI.WebControls.TextBox passwordtb;
 
         /// <summary>
         /// confpassbl control.
->>>>>>> alvin
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.TextBox txtUsername;
-
-        /// <summary>
-        /// RequiredFieldValidatorUsername control.
-=======
         protected global::System.Web.UI.WebControls.Label confpassbl;
 
         /// <summary>
         /// confpasstb control.
->>>>>>> alvin
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorUsername;
-
-        /// <summary>
-        /// CustomUsername control.
-=======
         protected global::System.Web.UI.WebControls.TextBox confpasstb;
 
         /// <summary>
         /// genderlbl control.
->>>>>>> alvin
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.CustomValidator CustomUsername;
-
-        /// <summary>
-        /// txtPassword control.
-=======
         protected global::System.Web.UI.WebControls.Label genderlbl;
 
         /// <summary>
         /// genderRadio control.
->>>>>>> alvin
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
-
-        /// <summary>
-        /// RequiredFieldValidatorPassword control.
-=======
         protected global::System.Web.UI.WebControls.RadioButtonList genderRadio;
 
         /// <summary>
         /// calendarlbl control.
->>>>>>> alvin
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorPassword;
-
-        /// <summary>
-        /// CustomPassword control.
-=======
         protected global::System.Web.UI.WebControls.Label calendarlbl;
 
         /// <summary>
         /// dateCalendar control.
->>>>>>> alvin
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.CustomValidator CustomPassword;
-
-        /// <summary>
-        /// txtConfirmPassword control.
-=======
         protected global::System.Web.UI.WebControls.Calendar dateCalendar;
 
         /// <summary>
         /// messagelbl control.
->>>>>>> alvin
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
-
-        /// <summary>
-        /// RequiredFieldValidatorConfirmPassword control.
-=======
         protected global::System.Web.UI.WebControls.Label messagelbl;
 
         /// <summary>
         /// registerbtn control.
->>>>>>> alvin
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorConfirmPassword;
-
-        /// <summary>
-        /// CompareValidatorPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorPassword;
-
-        /// <summary>
-        /// rblGender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblGender;
-
-        /// <summary>
-        /// RequiredFieldValidatorGender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorGender;
-
-        /// <summary>
-        /// txtDOB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDOB;
-
-        /// <summary>
-        /// RequiredFieldValidatorDOB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorDOB;
-
-        /// <summary>
-        /// CustomDOB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomDOB;
-
-        /// <summary>
-        /// btnRegister control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegister;
-=======
         protected global::System.Web.UI.WebControls.Button registerbtn;
->>>>>>> alvin
     }
 }

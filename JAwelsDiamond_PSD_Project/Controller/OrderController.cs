@@ -1,8 +1,4 @@
 ﻿using jawelsdiamond_psd_project.handler;
-<<<<<<< HEAD
-using JAwelsDiamond_PSD_Project.Handler;
-=======
->>>>>>> alvin
 using JAwelsDiamond_PSD_Project.Models;
 using System;
 using System.Collections.Generic;
@@ -20,12 +16,7 @@ namespace JAwelsDiamond_PSD_Project.Controller
 			bool exists = handler.transactionexists(id);
 			if (exists)
 			{
-<<<<<<< HEAD
-				handler.confirmpackage(id);
-				return true;
-=======
 				handler.confirmPackage(id);
->>>>>>> alvin
 			}
 		}
 
@@ -34,12 +25,7 @@ namespace JAwelsDiamond_PSD_Project.Controller
             bool exists = handler.transactionexists(id);
             if (exists)
             {
-<<<<<<< HEAD
-                handler.rejectpackage(id);
-                return true;
-=======
                 handler.rejectPackage(id);
->>>>>>> alvin
             }
         }
 
