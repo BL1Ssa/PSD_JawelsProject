@@ -9,6 +9,7 @@ namespace JAwelsDiamond_PSD_Project.Factory
 {
 	public class TransactionHeaderFactory
 	{
+        TransactionRepository repo = new TransactionRepository();
 		public TransactionHeader createTransactionHeader(int transactionId, int userId, DateTime transactionDate, string paymentMethod, string transactionStatus)
 		{
 			TransactionHeader th = new TransactionHeader();
