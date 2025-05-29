@@ -81,7 +81,7 @@ namespace JAwelsDiamond_PSD_Project.Views
             }
         }
 
-        protected void backbtn_Click(object sender, EventArgs e)
+        protected void Backbtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Views/HomePage.aspx");
         }

@@ -14,12 +14,8 @@ namespace JAwelsDiamond_PSD_Project.Views
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        protected void dateCalendar_SelectionChanged(object sender, EventArgs e)
-        {
-
         }
-        protected void genderRadio_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        
 
 
         protected void registerbtn_Click(object sender, EventArgs e)

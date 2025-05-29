@@ -9,11 +9,11 @@ namespace JAwelsDiamond_PSD_Project.Controller
 {
 	public class OrderController
 	{
-        orderhandler handler = new orderhandler();
+        OrderHandler handler = new OrderHandler();
 
 		public void confirmPackage(int id)
 		{
-			bool exists = handler.transactionexists(id);
+			bool exists = handler.transactionExists(id);
 			if (exists)
 			{
 				handler.confirmPackage(id);
@@ -22,7 +22,7 @@ namespace JAwelsDiamond_PSD_Project.Controller
 
         public void rejectPackage(int id)
         {
-            bool exists = handler.transactionexists(id);
+            bool exists = handler.transactionExists(id);
             if (exists)
             {
                 handler.rejectPackage(id);
@@ -31,7 +31,7 @@ namespace JAwelsDiamond_PSD_Project.Controller
 
 		public List<TransactionHeader> getAllTransaction(int id)
 		{
-			return handler.getalltransactions(id);
+			return handler.getAllTransactions(id);
 		}
 
 		public TransactionDetail getTransactionDetail(int transactionId)

@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <h1My Orders</h1>
+            <h1>My Orders</h1>
                 <asp:GridView ID="OrdersGV" runat="server" AutoGenerateColumns="False" OnRowCommand="OrdersGV_RowCommand" OnRowDataBound="OrdersGV_RowDataBound">
                     <Columns>
                         <asp:BoundField DataField="TransactionID" HeaderText="Transaction ID" />
@@ -28,7 +28,7 @@
             </asp:GridView>
                 <br />
                 <br />
-                <asp:Button ID="backbtn" runat="server" Text="Back" OnClick="backbtn_Click" />
+                <asp:Button ID="backbtn" runat="server" Text="Back" OnClick="Backbtn_Click" />
 
         </div>
     </form>

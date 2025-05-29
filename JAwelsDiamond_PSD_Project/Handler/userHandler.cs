@@ -1,12 +1,7 @@
 ﻿using JAwelsDiamond_PSD_Project.Factory;
 using JAwelsDiamond_PSD_Project.Models;
-<<<<<<< HEAD
 using JAwelsDiamond_PSD_Project.Repository;
 using System;
-=======
-using System;
-using JAwelsDiamond_PSD_Project.Factory;
->>>>>>> alvin
 
 public class userHandler
 {
@@ -23,18 +18,6 @@ public class userHandler
         return repo.GetUserById(userId);
     }
 
-<<<<<<< HEAD
-    public (bool IsSuccess, string ErrorMessage) RegisterUser(string email, string username, string password, string gender, DateTime dob)
-    {
-        var repo = new UserRepository();
-        if (repo.IsEmailExists(email))
-            return (false, "Email already registered.");
-
-        var user = UserFactory.CreateUser(email, username, password, gender, dob, "customer");
-        repo.AddUser(user);
-        return (true, null);
-    }
-=======
     public void register(string email, string username, string password, DateTime dob, string gender)
     {
         MsUser user = userFactory.Create(email, password, username, "customer", dob);
@@ -52,5 +35,4 @@ public class userHandler
             return false;
         }
     } 
->>>>>>> alvin
 }
