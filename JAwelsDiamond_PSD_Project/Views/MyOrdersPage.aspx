@@ -9,22 +9,25 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView ID="OrdersGV" runat="server" AutoGenerateColumns="False">
-                <Columns>
-                    <asp:BoundField DataField="TransactionId" HeaderText="Transaction ID" />
-                    <asp:BoundField DataField="TransactionDate" HeaderText="Transaction Date" />
-                    <asp:BoundField DataField="PaymentMethod" HeaderText="Payment Method" />
-                    <asp:TemplateField HeaderText="Status">
-                        <ItemTemplate>
-                            <asp:Button ID="ConfirmBtn" runat="server" Text="Confirm" Visible="false" class="positiveBtn"/>
-                            <asp:Button ID="RejectBtn" runat="server" Text="Reject" Visible="false" class="negativeBtn"/>
-                            <asp:Label ID="StatusLbl" runat="server" Text='<%# Eval("Status") %>' Visible="false" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:ButtonField Text="View Details" />
-                </Columns>
+            <h1>My Orders</h1>
+                <asp:GridView ID="OrdersGV" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="OrdersGV_SelectedIndexChanged" OnRowCommand="OrdersGV_RowCommand">
+                    <Columns>
+                        <asp:BoundField DataField="TransactionID" HeaderText="Transaction ID" />
+                        <asp:BoundField DataField="Transaction Date" HeaderText="Transaction Date" />
+                        <asp:BoundField DataField="PaymentMethod" HeaderText="Payment Method" />
+                        <asp:TemplateField HeaderText="Status">
+                           <ItemTemplate>
+                                <asp:Label ID="lblPending" runat="server" Text="Pending" Visible="false" CssClass="text-muted" />
+                                <asp:Button ID="btnConfirm" runat="server" Text="Confirm" CommandName="Confirm" Visible="false" />
+                                <asp:Button ID="btnReject" runat="server" Text="Reject" CommandName="Reject" Visible="false" />
+                           </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:ButtonField Text="View Details" />
+                    </Columns>
             </asp:GridView>
+
         </div>
     </form>
+
 </body>
 </html>
