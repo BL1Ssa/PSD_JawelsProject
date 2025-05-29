@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using JAwelsDiamond_PSD_Project.Models;
 
 namespace JAwelsDiamond_PSD_Project.Views
 {
@@ -11,7 +8,15 @@ namespace JAwelsDiamond_PSD_Project.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                using (var db = new JawelsdatabaseEntities2())
+                {
+                    var jewels = db.MsJewels.Select(j => new { j.JewelID }).ToList();
+                    gvJewels.DataSource = jewels;
+                    gvJewels.DataBind();
+                }
+            }
         }
     }
 }
