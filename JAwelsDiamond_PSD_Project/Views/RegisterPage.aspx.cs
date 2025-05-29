@@ -28,10 +28,15 @@ namespace JAwelsDiamond_PSD_Project.Views
             DateTime dob = dateCalendar.SelectedDate;
 
             string response = controller.Register(email, username, password, confPass, gender, dob);
-            messagelbl.Text = response;
+            if(response != "register success")
+            {
+                messagelbl.Text = response;
+            }
+            else
+            {
 
-            Response.Redirect("~/Views/LoginPage.aspx");
-
+                Response.Redirect("~/Views/LoginPage.aspx");
+            }
         }
     }
 }

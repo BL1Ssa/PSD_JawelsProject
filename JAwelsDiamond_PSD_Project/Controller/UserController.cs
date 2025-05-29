@@ -37,7 +37,15 @@ namespace JAwelsDiamond_PSD_Project.Controller
         public string Register(string email, string username, string password, string confrimPass, string gender, DateTime dob)
         {
             string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            if (handler.userExists(email))
+            if(email == "" )
+            {
+                return "email must not be empty";
+            }
+            else if(username == "")
+            {
+                return "username must not be empty";
+            }
+            else if (handler.userExists(email))
             {
                 return "user with the same email already exist";
             }
