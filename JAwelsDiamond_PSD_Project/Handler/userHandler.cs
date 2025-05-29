@@ -2,6 +2,7 @@
 using JAwelsDiamond_PSD_Project.Models;
 using JAwelsDiamond_PSD_Project.Repository;
 using System;
+using System.EnterpriseServices;
 
 public class userHandler
 {
@@ -20,7 +21,8 @@ public class userHandler
 
     public void register(string email, string username, string password, DateTime dob, string gender)
     {
-        MsUser user = userFactory.Create(email, password, username, "customer", dob);
+        int userId = repo.GetLastId();
+        MsUser user = userFactory.Create(userId, email, password, username, "customer", dob);
         repo.AddUser(user);
     }
 

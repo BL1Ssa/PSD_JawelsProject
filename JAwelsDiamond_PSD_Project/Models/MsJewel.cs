@@ -18,7 +18,6 @@ namespace JAwelsDiamond_PSD_Project.Models
         public MsJewel()
         {
             this.Carts = new HashSet<Cart>();
-            this.TransactionDetails = new HashSet<TransactionDetail>();
         }
     
         public int JewelID { get; set; }
@@ -32,7 +31,5 @@ namespace JAwelsDiamond_PSD_Project.Models
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual MsBrand MsBrand { get; set; }
         public virtual MsCategory MsCategory { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TransactionDetail> TransactionDetails { get; set; }
     }
 }

@@ -73,5 +73,11 @@ namespace JAwelsDiamond_PSD_Project.Views
                 lblError.Visible = true;
             }
         }
+
+        protected void makeAccountLink_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/RegisterPage.aspx");
+            return;
+        }
     }
 }

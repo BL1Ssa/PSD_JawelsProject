@@ -6,13 +6,11 @@ namespace JAwelsDiamond_PSD_Project.Factory
 {
     public class UserFactory
     {
-        private UserRepository repo = new UserRepository();
-        public MsUser Create(string email, string password, string name, string role, DateTime dob)
+        public MsUser Create(int userId, string email, string password, string name, string role, DateTime dob)
         {
-            int id = repo.GetLastId();
             return new MsUser
             {
-                UserID = id,
+                UserID = userId,
                 UserEmail = email,
                 UserPassword = password,
                 UserName = name,

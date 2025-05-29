@@ -15,21 +15,24 @@ namespace JAwelsDiamond_PSD_Project.Views
         OrderController controller = new OrderController();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                checkUserSession();
+                int id = int.Parse(Session["UserID"] as string);
+                List<TransactionHeader> data = controller.getAllTransaction(id);
 
-            checkUserSession();
-            int id = int.Parse(Session["UserID"] as string);
-            List<TransactionHeader> data = controller.getAllTransaction(id);
+                OrdersGV.DataSource = data;
+                OrdersGV.DataBind();
+            }
 
-            OrdersGV.DataSource = data;
-            OrdersGV.DataBind();
         }
 
         protected void checkUserSession()
         {
-            string role = Session["UserRole"] as string;
-            if (Session["UserID"] == null && role != "customer")
+            if (Session["UserID"] == null || Session["UserRole"] as string != "customer")
             {
                 Response.Redirect("~/Views/LoginPage.aspx");
+                return;
             }
             else
             {
@@ -44,15 +47,18 @@ namespace JAwelsDiamond_PSD_Project.Views
             if(e.CommandName == "View")
             { 
                 Response.Redirect("~/View/TransactionDetailsPage.aspx?id=" + id);
+                return;
             }
             else if (e.CommandName == "confirm")
             {
                 controller.confirmPackage(id);
+                return;
                 
             }
             else if(e.CommandName == "Reject")
             {
                 controller.rejectPackage(id);
+                return;
             }
 
         }

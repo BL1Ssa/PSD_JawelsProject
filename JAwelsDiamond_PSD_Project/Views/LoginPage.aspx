@@ -38,10 +38,12 @@
             </div>
 
 
-            <div style="margin-top:20px;">
+            <div style="margin-top:20px; justify-content:space-between;">
                 <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
+                <asp:LinkButton ID="makeAccountLink" runat="server" OnClick="makeAccountLink_Click">Make new account</asp:LinkButton>
             </div>
         </div>
+
     </form>
 </body>
 </html>

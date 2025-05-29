@@ -15,16 +15,20 @@ namespace JAwelsDiamond_PSD_Project.Views
         JewelController jewelController = new JewelController();
         protected void Page_Load(object sender, EventArgs e)
         {
-            int id = int.Parse(Request.QueryString["id"]);
-            TransactionDetail td = controller.getTransactionDetail(id);
+            if (!IsPostBack)
+            {
+                int id = int.Parse(Request.QueryString["id"]);
+                TransactionDetail td = controller.getTransactionDetail(id);
 
 
-            int jewelId = td.JewelID;
-            MsJewel jewel = jewelController.GetJewelById(jewelId);
+                int jewelId = td.JewelID;
+                MsJewel jewel = jewelController.GetJewelById(jewelId);
 
-            idlbl.Text = td.TransactionID.ToString();
-            namelbl.Text = jewel.JewelName.ToString();
-            quantitylbl.Text = td.Quantity.ToString();
+                idlbl.Text = td.TransactionID.ToString();
+                namelbl.Text = jewel.JewelName.ToString();
+                quantitylbl.Text = td.Quantity.ToString();
+            }
+
         }
         protected void backbtn_Click(object sender, EventArgs e)
         {

@@ -14,9 +14,10 @@ namespace JAwelsDiamond_PSD_Project.Repository
 		TransactionDetailFactory tdFactory = new TransactionDetailFactory();
 
 		//create
-		public void addNewTransactionHeader(int transactionId, int userId, DateTime transactionDate, string paymentMethod, string transactionStatus)
+		public void addNewTransactionHeader(int userId, DateTime transactionDate, string paymentMethod, string transactionStatus)
 		{
-			TransactionHeader th = thFactory.createNewTransactionHeader(userId, transactionDate, paymentMethod, transactionStatus);
+            int transactionId = getLastHeaderId();
+			TransactionHeader th = thFactory.createTransactionHeader(transactionId, userId, transactionDate, paymentMethod, transactionStatus);
 			db.TransactionHeaders.Add(th);
 			db.SaveChanges();
 		}
