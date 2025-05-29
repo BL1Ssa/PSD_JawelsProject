@@ -19,5 +19,17 @@ namespace JAwelsDiamond_PSD_Project.Factory
                 JewelReleaseYear = int.Parse(releaseYear)
             };
         }
+
+        public static MsJewel CreateJewel(string name, int categoryId, int brandId, int price, int year)
+        {
+            return new MsJewel
+            {
+                JewelName = name,
+                CategoryID = categoryId,
+                BrandID = brandId,
+                JewelPrice = price,
+                JewelReleaseYear = year
+            };
+        }
     }
 }

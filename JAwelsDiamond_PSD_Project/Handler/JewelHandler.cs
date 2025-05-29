@@ -11,6 +11,11 @@ namespace JAwelsDiamond_PSD_Project.Handler
     {
         private JewelRepository repo = new JewelRepository();
 
+        public MsJewel GetJewelById(int id)
+        {
+            return repo.GetJewelById(id);
+        }
+
         public List<MsCategory> GetCategories()
         {
             return repo.GetCategories();
@@ -35,6 +40,11 @@ namespace JAwelsDiamond_PSD_Project.Handler
         public bool AddJewel(string name, string categoryId, string brandId, string price, string releaseYear, out string errorMessage)
         {
             return repo.AddJewel(name, categoryId, brandId, price, releaseYear, out errorMessage);
+        }
+
+        public bool UpdateJewel(int jewelId, string name, int categoryId, int brandId, int price, int year, out string errorMessage)
+        {
+            return repo.UpdateJewel(jewelId, name, categoryId, brandId, price, year, out errorMessage);
         }
 
         public bool ValidatePrice(string priceStr)

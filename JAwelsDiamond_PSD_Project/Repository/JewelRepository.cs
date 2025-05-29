@@ -56,26 +56,28 @@ namespace JAwelsDiamond_PSD_Project.Repository
         {
             using (var db = new JawelsdatabaseEntities2())
             {
-                return db.MsJewels.Find(id);
+                return db.MsJewels.FirstOrDefault(j => j.JewelID == id);
             }
         }
 
-        public bool UpdateJewel(MsJewel updatedJewel)
+        public bool UpdateJewel(int jewelId, string name, int categoryId, int brandId, int price, int year, out string errorMessage)
         {
+            errorMessage = "";
             using (var db = new JawelsdatabaseEntities2())
             {
-                MsJewel existing = db.MsJewels.Find(updatedJewel.JewelID);
-                if (existing != null)
+                var jewel = db.MsJewels.FirstOrDefault(j => j.JewelID == jewelId);
+                if (jewel == null)
                 {
-                    existing.JewelName = updatedJewel.JewelName;
-                    existing.JewelPrice = updatedJewel.JewelPrice;
-                    existing.JewelReleaseYear = updatedJewel.JewelReleaseYear;
-                    existing.BrandID = updatedJewel.BrandID;
-                    existing.CategoryID = updatedJewel.CategoryID;
-                    db.SaveChanges();
-                    return true;
+                    errorMessage = "Jewel not found.";
+                    return false;
                 }
-                return false;
+                jewel.JewelName = name;
+                jewel.CategoryID = categoryId;
+                jewel.BrandID = brandId;
+                jewel.JewelPrice = price;
+                jewel.JewelReleaseYear = year;
+                db.SaveChanges();
+                return true;
             }
         }
 

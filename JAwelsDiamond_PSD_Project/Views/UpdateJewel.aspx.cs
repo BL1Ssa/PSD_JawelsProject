@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Linq;
 using JAwelsDiamond_PSD_Project.Models;
+using JAwelsDiamond_PSD_Project.Controller;
 
 namespace JAwelsDiamond_PSD_Project.Views
 {
     public partial class UpdateJewel : System.Web.UI.Page
     {
+        private JewelController jewelController = new JewelController();
+
         protected int JewelID
         {
             get
@@ -31,94 +34,76 @@ namespace JAwelsDiamond_PSD_Project.Views
 
         private void LoadDropdowns()
         {
-            using (var db = new JawelsdatabaseEntities2())
-            {
-                ddlCategory.DataSource = db.MsCategories.ToList();
-                ddlCategory.DataTextField = "CategoryName";
-                ddlCategory.DataValueField = "CategoryID";
-                ddlCategory.DataBind();
-                ddlCategory.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select Category--", ""));
+            ddlCategory.DataSource = jewelController.GetCategories();
+            ddlCategory.DataTextField = "CategoryName";
+            ddlCategory.DataValueField = "CategoryID";
+            ddlCategory.DataBind();
+            ddlCategory.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select Category--", ""));
 
-                ddlBrand.DataSource = db.MsBrands.ToList();
-                ddlBrand.DataTextField = "BrandName";
-                ddlBrand.DataValueField = "BrandID";
-                ddlBrand.DataBind();
-                ddlBrand.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select Brand--", ""));
-            }
+            ddlBrand.DataSource = jewelController.GetBrands();
+            ddlBrand.DataTextField = "BrandName";
+            ddlBrand.DataValueField = "BrandID";
+            ddlBrand.DataBind();
+            ddlBrand.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select Brand--", ""));
         }
 
         private void LoadJewelData()
         {
-            using (var db = new JawelsdatabaseEntities2())
+            var jewel = jewelController.GetJewelById(JewelID);
+            if (jewel == null)
             {
-                var jewel = db.MsJewels.FirstOrDefault(j => j.JewelID == JewelID);
-                if (jewel == null)
-                {
-                    lblError.Text = "Jewel not found.";
-                    lblError.Visible = true;
-                    btnUpdate.Enabled = false;
-                    return;
-                }
-                txtJewelName.Text = jewel.JewelName;
-                ddlCategory.SelectedValue = jewel.CategoryID.ToString();
-                ddlBrand.SelectedValue = jewel.BrandID.ToString();
-                txtPrice.Text = jewel.JewelPrice.ToString();
-                txtReleaseYear.Text = jewel.JewelReleaseYear.ToString();
+                lblError.Text = "Jewel not found.";
+                lblError.Visible = true;
+                btnUpdate.Enabled = false;
+                return;
             }
+            txtJewelName.Text = jewel.JewelName;
+            ddlCategory.SelectedValue = jewel.CategoryID.ToString();
+            ddlBrand.SelectedValue = jewel.BrandID.ToString();
+            txtPrice.Text = jewel.JewelPrice.ToString();
+            txtReleaseYear.Text = jewel.JewelReleaseYear.ToString();
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) return;
 
-            int price, year, catId, brandId;
-            if (!int.TryParse(txtPrice.Text, out price) ||
-                !int.TryParse(txtReleaseYear.Text, out year) ||
-                !int.TryParse(ddlCategory.SelectedValue, out catId) ||
-                !int.TryParse(ddlBrand.SelectedValue, out brandId))
-            {
-                lblError.Text = "Invalid input.";
-                lblError.Visible = true;
-                return;
-            }
+            string errorMessage;
+            bool success = jewelController.UpdateJewel(
+                JewelID,
+                txtJewelName.Text.Trim(),
+                ddlCategory.SelectedValue,
+                ddlBrand.SelectedValue,
+                txtPrice.Text.Trim(),
+                txtReleaseYear.Text.Trim(),
+                out errorMessage
+            );
 
-            using (var db = new JawelsdatabaseEntities2())
+            if (success)
             {
-                var jewel = db.MsJewels.FirstOrDefault(j => j.JewelID == JewelID);
-                if (jewel == null)
-                {
-                    lblError.Text = "Jewel not found.";
-                    lblError.Visible = true;
-                    return;
-                }
-                jewel.JewelName = txtJewelName.Text.Trim();
-                jewel.CategoryID = catId;
-                jewel.BrandID = brandId;
-                jewel.JewelPrice = price;
-                jewel.JewelReleaseYear = year;
-
-                db.SaveChanges();
                 lblSuccess.Text = "Jewel updated successfully!";
                 lblSuccess.Visible = true;
+            }
+            else
+            {
+                lblError.Text = errorMessage;
+                lblError.Visible = true;
             }
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            if (!Page.IsValid) return;
             Response.Redirect("HomePage.aspx");
         }
 
         protected void cvJewelName_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
         {
-            var len = args.Value.Trim().Length;
-            args.IsValid = len >= 3 && len <= 25;
+            args.IsValid = jewelController.ValidateJewelName(args.Value);
         }
 
         protected void cvReleaseYear_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
         {
-            int year;
-            args.IsValid = int.TryParse(args.Value, out year) && year < DateTime.Now.Year;
+            args.IsValid = jewelController.ValidateReleaseYear(args.Value);
         }
     }
 }
