@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 namespace jawelsdiamond_psd_project.handler
 {
-	public class orderhandler
+	public class OrderHandler
 	{
 		TransactionRepository repo = new TransactionRepository();
-		public bool confirmpackage(int id)
+		public bool confirmPackage(int id)
 		{
 			TransactionHeader th = repo.getTransactionHeader(id);
 			th.TransactionStatus = "done";
@@ -15,7 +15,7 @@ namespace jawelsdiamond_psd_project.handler
 			return response;
 		}
 
-		public bool rejectpackage(int id)
+		public bool rejectPackage(int id)
 		{
 			TransactionHeader th = repo.getTransactionHeader(id);
 			th.TransactionStatus = "rejected";
@@ -23,7 +23,7 @@ namespace jawelsdiamond_psd_project.handler
 			return response;
 		}
 
-		public bool transactionexists(int id)
+		public bool transactionExists(int id)
 		{
             TransactionHeader th = repo.getTransactionHeader(id);
 			if(th == null)
@@ -33,7 +33,7 @@ namespace jawelsdiamond_psd_project.handler
 			return true;
         }
 
-		public List<TransactionHeader> getalltransactions(int userid)
+		public List<TransactionHeader> getAllTransactions(int userid)
 		{
 			List<TransactionHeader> allth = repo.getAllTransactions(userid);
 			return allth;
