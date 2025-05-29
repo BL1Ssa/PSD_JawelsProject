@@ -94,6 +94,8 @@
     <Content Include="Views\HomePage.aspx" />
     <Content Include="Views\AddJewel.aspx" />
     <Content Include="Views\MyOrdersPage.aspx" />
+    <Content Include="Views\RegisterPage.aspx" />
+    <Content Include="Views\TransactionDetailsPage.aspx" />
     <Content Include="Views\UpdateJewel.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -182,6 +184,20 @@
     </Compile>
     <Compile Include="Views\MyOrdersPage.aspx.designer.cs">
       <DependentUpon>MyOrdersPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterPage.aspx.cs">
+      <DependentUpon>RegisterPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\RegisterPage.aspx.designer.cs">
+      <DependentUpon>RegisterPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransactionDetailsPage.aspx.cs">
+      <DependentUpon>TransactionDetailsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\TransactionDetailsPage.aspx.designer.cs">
+      <DependentUpon>TransactionDetailsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\UpdateJewel.aspx.cs">
       <DependentUpon>UpdateJewel.aspx</DependentUpon>

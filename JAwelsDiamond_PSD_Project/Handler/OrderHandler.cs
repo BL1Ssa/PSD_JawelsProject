@@ -7,20 +7,18 @@ namespace jawelsdiamond_psd_project.handler
 	public class OrderHandler
 	{
 		TransactionRepository repo = new TransactionRepository();
-		public bool confirmPackage(int id)
+		public void confirmPackage(int id)
 		{
 			TransactionHeader th = repo.getTransactionHeader(id);
 			th.TransactionStatus = "done";
 			bool response = repo.updateTransactionHeader(th);
-			return response;
 		}
 
-		public bool rejectPackage(int id)
+		public void rejectPackage(int id)
 		{
 			TransactionHeader th = repo.getTransactionHeader(id);
 			th.TransactionStatus = "rejected";
 			bool response = repo.updateTransactionHeader(th);
-			return response;
 		}
 
 		public bool transactionExists(int id)
@@ -37,6 +35,12 @@ namespace jawelsdiamond_psd_project.handler
 		{
 			List<TransactionHeader> allth = repo.getAllTransactions(userid);
 			return allth;
+		}
+
+		public TransactionDetail getTransactionDetail(int transactionId)
+		{
+			TransactionDetail transactionDetail = repo.getTransactionDetail(transactionId);
+			return transactionDetail;
 		}
 	}
 }

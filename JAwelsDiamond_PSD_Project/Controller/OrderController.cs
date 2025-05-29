@@ -11,31 +11,32 @@ namespace JAwelsDiamond_PSD_Project.Controller
 	{
 		OrderHandler handler = new OrderHandler();
 
-		public bool confirmPackage(int id)
+		public void confirmPackage(int id)
 		{
 			bool exists = handler.transactionExists(id);
 			if (exists)
 			{
 				handler.confirmPackage(id);
-				return true;
 			}
-			return false;
 		}
 
-        public bool rejectPackage(int id)
+        public void rejectPackage(int id)
         {
             bool exists = handler.transactionExists(id);
             if (exists)
             {
                 handler.rejectPackage(id);
-                return true;
             }
-            return false;
         }
 
 		public List<TransactionHeader> getAllTransaction(int id)
 		{
 			return handler.getAllTransactions(id);
+		}
+
+		public TransactionDetail getTransactionDetail(int transactionId)
+		{
+			return handler.getTransactionDetail(transactionId);
 		}
 
     }

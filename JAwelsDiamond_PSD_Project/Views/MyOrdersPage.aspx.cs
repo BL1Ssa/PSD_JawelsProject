@@ -22,20 +22,12 @@ namespace JAwelsDiamond_PSD_Project.Views
 
             OrdersGV.DataSource = data;
             OrdersGV.DataBind();
-
-
-
-
-        }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         protected void checkUserSession()
         {
-            if (Session["UserID"] == null)
+            string role = Session["UserRole"] as string;
+            if (Session["UserID"] == null && role != "customer")
             {
                 Response.Redirect("~/Views/LoginPage.aspx");
             }
@@ -43,6 +35,55 @@ namespace JAwelsDiamond_PSD_Project.Views
             {
                 return;
             }
+
+        }
+
+        protected void OrdersGV_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int id = getId(e);
+            if(e.CommandName == "View")
+            { 
+                Response.Redirect("~/View/TransactionDetailsPage.aspx?id=" + id);
+            }
+            else if (e.CommandName == "confirm")
+            {
+                controller.confirmPackage(id);
+                
+            }
+            else if(e.CommandName == "Reject")
+            {
+                controller.rejectPackage(id);
+            }
+
+        }
+        private int getId(GridViewCommandEventArgs e)
+        {
+            string argument = e.CommandArgument.ToString();
+            int id = int.Parse(argument);
+
+            return id;
+        }
+
+        protected void OrdersGV_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string status = DataBinder.Eval(e.Row.DataItem, "TransactionStatus").ToString();
+
+                Button btnConfirm = (Button)e.Row.FindControl("btnConfirm");
+                Button btnReject = (Button)e.Row.FindControl("btnReject");
+
+                if (status == "Arrived")
+                {
+                    if (btnConfirm != null) btnConfirm.Visible = true;
+                    if (btnReject != null) btnReject.Visible = true;
+                }
+            }
+        }
+
+        protected void backbtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/HomePage.aspx");
         }
     }
 }
