@@ -1,4 +1,4 @@
-﻿/*using JAwelsDiamond_PSD_Project.Models;
+﻿using JAwelsDiamond_PSD_Project.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +8,13 @@ namespace JAwelsDiamond_PSD_Project.Handler
 {
 	public class OrderHandler
 	{
-
+		transactionrepo
 		public bool confirmPackage(int id)
 		{
-			//TransactionHeader th = repo.getTransactionHeader(id);
-			//th.TransactionStatus = "done";
-			//bool response = repo.updateTransactionHeader(th);
-			//return response;
+			TransactionHeader th = repo.getTransactionHeader(id);
+			th.TransactionStatus = "done";
+			bool response = repo.updateTransactionHeader(th);
+			return response;
 		}
 
 		public bool rejectPackage(int id)
@@ -41,4 +41,4 @@ namespace JAwelsDiamond_PSD_Project.Handler
 			return allTh;
 		}
 	}
-}*/
+}
