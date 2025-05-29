@@ -1,17 +1,13 @@
 ﻿using JAwelsDiamond_PSD_Project.Models;
 using JAwelsDiamond_PSD_Project.Repository;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace JAwelsDiamond_PSD_Project.Handler
+namespace jawelsdiamond_psd_project.handler
 {
-	public class OrderHandler
+	public class orderhandler
 	{
 		TransactionRepository repo = new TransactionRepository();
-
-		public bool confirmPackage(int id)
+		public bool confirmpackage(int id)
 		{
 			TransactionHeader th = repo.getTransactionHeader(id);
 			th.TransactionStatus = "done";
@@ -19,7 +15,7 @@ namespace JAwelsDiamond_PSD_Project.Handler
 			return response;
 		}
 
-		public bool rejectPackage(int id)
+		public bool rejectpackage(int id)
 		{
 			TransactionHeader th = repo.getTransactionHeader(id);
 			th.TransactionStatus = "rejected";
@@ -27,7 +23,7 @@ namespace JAwelsDiamond_PSD_Project.Handler
 			return response;
 		}
 
-		public bool transactionExists(int id)
+		public bool transactionexists(int id)
 		{
             TransactionHeader th = repo.getTransactionHeader(id);
 			if(th == null)
@@ -37,10 +33,10 @@ namespace JAwelsDiamond_PSD_Project.Handler
 			return true;
         }
 
-		public List<TransactionHeader> getAllTransactions(int userId)
+		public List<TransactionHeader> getalltransactions(int userid)
 		{
-			List<TransactionHeader> allTh = repo.getAllTransactions(userId);
-			return allTh;
+			List<TransactionHeader> allth = repo.getAllTransactions(userid);
+			return allth;
 		}
 	}
 }

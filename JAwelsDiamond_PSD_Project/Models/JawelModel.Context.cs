@@ -13,10 +13,10 @@ namespace JAwelsDiamond_PSD_Project.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class JawelsDatabaseEntities : DbContext
+    public partial class JawelsdatabaseEntities2 : DbContext
     {
-        public JawelsDatabaseEntities()
-            : base("name=JawelsDatabaseEntities")
+        public JawelsdatabaseEntities2()
+            : base("name=JawelsdatabaseEntities2")
         {
         }
     
@@ -25,12 +25,12 @@ namespace JAwelsDiamond_PSD_Project.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<MsBrand> MsBrands { get; set; }
         public virtual DbSet<MsCategory> MsCategories { get; set; }
         public virtual DbSet<MsJewel> MsJewels { get; set; }
         public virtual DbSet<MsUser> MsUsers { get; set; }
-        public virtual DbSet<TransactionHeader> TransactionHeaders { get; set; }
-        public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<TransactionDetail> TransactionDetails { get; set; }
+        public virtual DbSet<TransactionHeader> TransactionHeaders { get; set; }
     }
 }

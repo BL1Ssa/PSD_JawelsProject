@@ -9,7 +9,7 @@ namespace JAwelsDiamond_PSD_Project.Repository
 {
 	public class TransactionRepository
 	{
-		JawelsDatabaseEntities db = new JawelsDatabaseEntities();
+		JawelsdatabaseEntities2 db = new JawelsdatabaseEntities2();
 		TransactionHeaderFactory thFactory = new TransactionHeaderFactory();
 		TransactionDetailFactory tdFactory = new TransactionDetailFactory();
 
@@ -114,15 +114,15 @@ namespace JAwelsDiamond_PSD_Project.Repository
 
         //helper
         public int getLastHeaderId()
-		{
-			TransactionHeader last = (from th in db.TransactionHeaders select th).LastOrDefault();
-			return last.TransactionID;
-		}
+        {
+            TransactionHeader last = (from th in db.TransactionHeaders select th).LastOrDefault();
+            return last.TransactionID;
+        }
 
-		public int getLastDetailId()
-		{
-			TransactionDetail last = (from td in db.TransactionDetails select td).LastOrDefault();
-			return last.TransactionID;
-		}
-	}
+        public int getLastDetailId()
+        {
+            TransactionDetail last = (from td in db.TransactionDetails select td).LastOrDefault();
+            return last.TransactionID;
+        }
+    }
 }
