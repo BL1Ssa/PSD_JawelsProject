@@ -115,7 +115,7 @@ namespace JAwelsDiamond_PSD_Project.Repository
         //helper
         public int getLastHeaderId()
         {
-            TransactionHeader last = (from th in db.TransactionHeaders select th).LastOrDefault();
+            TransactionHeader last = (from th in db.TransactionHeaders select th).Last();
             return last.TransactionID;
         }
 

@@ -1,4 +1,5 @@
-﻿using JAwelsDiamond_PSD_Project.Handler;
+﻿using jawelsdiamond_psd_project.handler;
+using JAwelsDiamond_PSD_Project.Handler;
 using JAwelsDiamond_PSD_Project.Models;
 using System;
 using System.Collections.Generic;
