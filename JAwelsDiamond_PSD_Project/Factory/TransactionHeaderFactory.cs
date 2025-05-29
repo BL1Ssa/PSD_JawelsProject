@@ -1,4 +1,5 @@
 ﻿using JAwelsDiamond_PSD_Project.Models;
+using JAwelsDiamond_PSD_Project.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,8 @@ namespace JAwelsDiamond_PSD_Project.Factory
 
         public TransactionHeader createNewTransactionHeader(int userId, DateTime transactionDate, string paymentMethod, string transactionStatus)
         {
+            TransactionRepository repo = new TransactionRepository();
             int id = repo.getLastHeaderId();
-
 
             TransactionHeader th = new TransactionHeader();
             th.TransactionID = id;
