@@ -16,20 +16,9 @@
         <AssociationConnector Association="JawelsdatabaseModel.FK_Cart_ToTable_MsUser" ManuallyRouted="false" />
         <AssociationConnector Association="JawelsdatabaseModel.FK_MsJewel_ToTable_MsBrand" ManuallyRouted="false" />
         <AssociationConnector Association="JawelsdatabaseModel.FK_MsJewel_ToTable_MsCategory" ManuallyRouted="false" />
-        <AssociationConnector Association="JawelsdatabaseModel.FK_TransactionDetail_MsJewel" ManuallyRouted="true" >
-          <ConnectorPoint PointX="4.1562525" PointY="3.25" />
-          <ConnectorPoint PointX="4.1562525" PointY="1.3516183686211312" />
-          <ConnectorPoint PointX="4.889063325" PointY="1.3516183686211312" />
-          <ConnectorPoint PointX="4.889063325" PointY="1.1991452755274665" />
-          <ConnectorPoint PointX="5.25" PointY="1.1991452755274665" />
-        </AssociationConnector>
+        <AssociationConnector Association="JawelsdatabaseModel.FK_TransactionDetail_MsJewel" ManuallyRouted="false" ></AssociationConnector>
         <AssociationConnector Association="JawelsdatabaseModel.FK_TransactionHeader_ToTable_MsUser" ManuallyRouted="false" />
-        <AssociationConnector Association="JawelsdatabaseModel.FK_TransactionDetail_TransactionHeader" ManuallyRouted="true" >
-          <ConnectorPoint PointX="4.5" PointY="8.1261528461538468" />
-          <ConnectorPoint PointX="4.875" PointY="7.7511528461538468" />
-          <ConnectorPoint PointX="4.875" PointY="1.8967823351210611" />
-          <ConnectorPoint PointX="5.25" PointY="1.8967823351210611" />
-        </AssociationConnector>
+        <AssociationConnector Association="JawelsdatabaseModel.FK_TransactionDetail_TransactionHeader" ManuallyRouted="false" ></AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

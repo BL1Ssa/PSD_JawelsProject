@@ -219,6 +219,7 @@
           <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BrandCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BrandClass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="MsJewels" Relationship="Self.FK_MsJewel_ToTable_MsBrand" FromRole="MsBrands" ToRole="MsJewels" />
         </EntityType>
         <EntityType Name="MsCategory">
           <Key>
@@ -226,6 +227,7 @@
           </Key>
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="CategoryName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="MsJewels" Relationship="Self.FK_MsJewel_ToTable_MsCategory" FromRole="MsCategories" ToRole="MsJewels" />
         </EntityType>
         <EntityType Name="MsJewel">
           <Key>
@@ -240,6 +242,7 @@
           <NavigationProperty Name="Carts" Relationship="Self.FK_Cart_ToTable_MsJewel" FromRole="MsJewels" ToRole="Carts" />
           <NavigationProperty Name="MsBrand" Relationship="Self.FK_MsJewel_ToTable_MsBrand" FromRole="MsJewels" ToRole="MsBrands" />
           <NavigationProperty Name="MsCategory" Relationship="Self.FK_MsJewel_ToTable_MsCategory" FromRole="MsJewels" ToRole="MsCategories" />
+          <NavigationProperty Name="TransactionDetails" Relationship="Self.FK_TransactionDetail_MsJewel" FromRole="MsJewels" ToRole="TransactionDetails" />
         </EntityType>
         <EntityType Name="MsUser">
           <Key>
@@ -252,6 +255,8 @@
           <Property Name="UserDOB" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UserGender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserRole" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Carts" Relationship="Self.FK_Cart_ToTable_MsUser" FromRole="MsUsers" ToRole="Carts" />
+          <NavigationProperty Name="TransactionHeaders" Relationship="Self.FK_TransactionHeader_ToTable_MsUser" FromRole="MsUsers" ToRole="TransactionHeaders" />
         </EntityType>
         <EntityType Name="TransactionDetail">
           <Key>
@@ -263,6 +268,7 @@
           <Property Name="JewelID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MsJewel" Relationship="Self.FK_TransactionDetail_MsJewel" FromRole="TransactionDetails" ToRole="MsJewels" />
+          <NavigationProperty Name="TransactionHeader" Relationship="Self.FK_TransactionDetail_TransactionHeader" FromRole="TransactionDetails" ToRole="TransactionHeaders" />
         </EntityType>
         <EntityType Name="TransactionHeader">
           <Key>

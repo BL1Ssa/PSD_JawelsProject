@@ -14,6 +14,13 @@ namespace JAwelsDiamond_PSD_Project.Models
     
     public partial class MsUser
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MsUser()
+        {
+            this.Carts = new HashSet<Cart>();
+            this.TransactionHeaders = new HashSet<TransactionHeader>();
+        }
+    
         public int UserID { get; set; }
         public string UserName { get; set; }
         public string UserPassword { get; set; }
@@ -21,5 +28,10 @@ namespace JAwelsDiamond_PSD_Project.Models
         public System.DateTime UserDOB { get; set; }
         public string UserGender { get; set; }
         public string UserRole { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Carts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TransactionHeader> TransactionHeaders { get; set; }
     }
 }

@@ -19,5 +19,6 @@ namespace JAwelsDiamond_PSD_Project.Models
         public int Quantity { get; set; }
     
         public virtual MsJewel MsJewel { get; set; }
+        public virtual TransactionHeader TransactionHeader { get; set; }
     }
 }
