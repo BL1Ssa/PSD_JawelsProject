@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JAwelsDiamond_PSD_Project.Handler;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,16 @@ namespace JAwelsDiamond_PSD_Project.Views
 {
     public partial class Homepage : System.Web.UI.Page
     {
+        JewelHandler handler = new JewelHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (!IsPostBack)
+            {
+                var jewelList = handler.GetAllJewels();
+                rptJewels.DataSource = jewelList;
+                rptJewels.DataBind();
+            }
         }
     }
 }
