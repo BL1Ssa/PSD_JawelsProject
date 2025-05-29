@@ -41,16 +41,6 @@ namespace JAwelsDiamond_PSD_Project.Repository
                 return null;
             }
         }
-
-        public void AddUser(MsUser user)
-        {
-            using (var db = new JawelsdatabaseEntities2())
-            {
-                db.MsUsers.Add(user);
-                db.SaveChanges();
-            }
-        }
-
         public bool RemoveUser(MsUser user)
         {
             using (var db = new JawelsdatabaseEntities2())
@@ -104,6 +94,23 @@ namespace JAwelsDiamond_PSD_Project.Repository
             {
                 var lastUser = db.MsUsers.OrderByDescending(u => u.UserID).FirstOrDefault();
                 return lastUser == null ? 1 : lastUser.UserID + 1;
+            }
+        }
+
+        public bool IsEmailExists(string email)
+        {
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                return db.MsUsers.Any(u => u.UserEmail == email);
+            }
+        }
+
+        public void AddUser(MsUser user)
+        {
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                db.MsUsers.Add(user);
+                db.SaveChanges();
             }
         }
     }
