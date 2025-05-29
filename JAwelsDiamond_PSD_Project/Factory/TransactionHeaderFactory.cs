@@ -1,5 +1,4 @@
-﻿using JAwelsDiamond_PSD_Project.Models;
-using JAwelsDiamond_PSD_Project.Repository;
+﻿/*using JAwelsDiamond_PSD_Project.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +8,6 @@ namespace JAwelsDiamond_PSD_Project.Factory
 {
 	public class TransactionHeaderFactory
 	{
-		TransactionRepository repo = new TransactionRepository();
 		public TransactionHeader createTransactionHeader(int transactionId, int userId, DateTime transactionDate, string paymentMethod, string transactionStatus)
 		{
 			TransactionHeader th = new TransactionHeader();
@@ -37,4 +35,4 @@ namespace JAwelsDiamond_PSD_Project.Factory
             return th;
         }
     }
-}
+}*/
