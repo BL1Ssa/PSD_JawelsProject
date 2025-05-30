@@ -11,7 +11,7 @@ namespace JAwelsDiamond_PSD_Project.Views
 {
 
 
-    public partial class WebForm1
+    public partial class HandleOrders
     {
 
         /// <summary>
@@ -24,30 +24,12 @@ namespace JAwelsDiamond_PSD_Project.Views
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// BtnRedirAddJewel control.
+        /// gvOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnRedirAddJewel;
-
-        /// <summary>
-        /// BtnRedirHandleOrder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnRedirHandleOrder;
-
-        /// <summary>
-        /// gvJewels control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvJewels;
+        protected global::System.Web.UI.WebControls.GridView gvOrders;
     }
 }
