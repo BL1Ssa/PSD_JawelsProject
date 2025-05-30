@@ -14,9 +14,12 @@ namespace JAwelsDiamond_PSD_Project.Views
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (Session["UserID"] != null)
+            {
+                Response.Redirect("ErrorPage.aspx");
+            }
         }
-        
-
+        }
 
         protected void registerbtn_Click(object sender, EventArgs e)
         {
