@@ -19,7 +19,7 @@ namespace JAwelsDiamond_PSD_Project.Views
                 Response.Redirect("ErrorPage.aspx");
             }
         }
-        }
+
 
         protected void registerbtn_Click(object sender, EventArgs e)
         {
@@ -31,7 +31,7 @@ namespace JAwelsDiamond_PSD_Project.Views
             DateTime dob = dateCalendar.SelectedDate;
 
             string response = controller.Register(email, username, password, confPass, gender, dob);
-            if(response != "register success")
+            if (response != "register success")
             {
                 messagelbl.Text = response;
             }
