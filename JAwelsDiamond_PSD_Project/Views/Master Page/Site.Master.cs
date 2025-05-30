@@ -31,8 +31,22 @@ namespace JAwelsDiamond_PSD_Project.Views.Master_Page
                         lblUserAdmin.Text = "Welcome, " + username;
                     }
                 }
-            
+        }
 
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+
+            // clear cookie pas logout
+            if (Request.Cookies["UserLogin"] != null)
+            {
+                HttpCookie cookie = new HttpCookie("UserLogin");
+                cookie.Expires = DateTime.Now.AddDays(-1); 
+                Response.Cookies.Add(cookie);
+            }
+
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

@@ -42,6 +42,15 @@ namespace JAwelsDiamond_PSD_Project.Views.Master_Page
         protected global::System.Web.UI.WebControls.Panel pnlCustomer;
 
         /// <summary>
+        /// btnLogout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnLogout;
+
+        /// <summary>
         /// lblUserCustomer control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace JAwelsDiamond_PSD_Project.Views.Master_Page
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlAdmin;
+
+        /// <summary>
+        /// LinkButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
 
         /// <summary>
         /// lblUserAdmin control.

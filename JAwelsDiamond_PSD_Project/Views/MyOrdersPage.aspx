@@ -13,7 +13,7 @@
                 <asp:GridView ID="OrdersGV" runat="server" AutoGenerateColumns="False" OnRowCommand="OrdersGV_RowCommand" OnRowDataBound="OrdersGV_RowDataBound">
                     <Columns>
                         <asp:BoundField DataField="TransactionID" HeaderText="Transaction ID" />
-                        <asp:BoundField DataField="Transaction Date" HeaderText="Transaction Date" />
+                        <asp:BoundField DataField="TransactionDate" HeaderText="Transaction Date" />
                         <asp:BoundField DataField="PaymentMethod" HeaderText="Payment Method" />
                         <asp:BoundField DataField="TransactionStatus" HeaderText="Status" />
                         <asp:TemplateField HeaderText="Actions">

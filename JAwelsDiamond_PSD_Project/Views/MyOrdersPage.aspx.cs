@@ -15,14 +15,27 @@ namespace JAwelsDiamond_PSD_Project.Views
         OrderController controller = new OrderController();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserID"] == null || Session["UserRole"] as string != "customer")
+            {
+                Response.Redirect("~/Views/ErrorPage.aspx");
+                Response.End(); 
+            }
+
             if (!IsPostBack)
             {
                 checkUserSession();
-                int id = int.Parse(Session["UserID"] as string);
+                int id = Convert.ToInt32(Session["UserID"]);
                 List<TransactionHeader> data = controller.getAllTransaction(id);
 
-                OrdersGV.DataSource = data;
-                OrdersGV.DataBind();
+                if (data == null || data.Count == 0)
+                {
+                    OrdersGV.EmptyDataText = "You have no orders yet.";
+                }
+                else {
+                    OrdersGV.DataSource = data;
+                    OrdersGV.DataBind();
+                }
+                
             }
 
         }
