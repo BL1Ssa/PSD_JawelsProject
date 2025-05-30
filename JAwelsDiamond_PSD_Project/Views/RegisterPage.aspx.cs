@@ -20,8 +20,6 @@ namespace JAwelsDiamond_PSD_Project.Views
             }
         }
         }
-        
-
 
         protected void registerbtn_Click(object sender, EventArgs e)
         {

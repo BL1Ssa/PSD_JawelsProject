@@ -20,6 +20,19 @@ namespace JAwelsDiamond_PSD_Project.Controller
         {
             _handler.ChangeOrderStatus(transactionId, command);
         }
+    public class OrderController
+    {
+        private orderhandler _handler = new orderhandler();
+
+        public IEnumerable<object> GetPendingOrders()
+        {
+            return _handler.GetPendingOrders();
+        }
+
+        public void ChangeOrderStatus(int transactionId, string command)
+        {
+            _handler.ChangeOrderStatus(transactionId, command);
+        }
     }
 	public class OrderController
 	{
