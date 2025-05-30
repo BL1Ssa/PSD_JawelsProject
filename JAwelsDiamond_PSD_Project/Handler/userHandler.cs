@@ -19,13 +19,13 @@ public class userHandler
         return repo.GetUserById(userId);
     }
 
-    public bool RegisterUser(string email, string username, string password, string gender, DateTime dob)
-    {
-        if (repo.EmailExists(email)) return false;
-        var user = UserFactory.CreateUser(email, username, password, gender, dob);
-        repo.AddUser(user);
-        return true;
-    }
+    //public bool RegisterUser(string email, string username, string password, string gender, DateTime dob)
+    //{
+    //    if (repo.EmailExists(email)) return false;
+    //    var user = UserFactory.CreateUser(email, username, password, gender, dob);
+    //    repo.AddUser(user);
+    //    return true;
+    //}
 
     public bool ValidateOldPassword(string userId, string oldPassword)
     {
@@ -43,8 +43,9 @@ public class userHandler
     public void register(string email, string username, string password, DateTime dob, string gender)
     {
         int userId = repo.GetLastId();
-        MsUser user = userFactory.Create(userId, email, password, username, "customer", dob);
-        repo.AddUser(user);
+        MsUser user = userFactory.CreateUser(userId, email,  username, password, gender,  dob, "customer");
+
+        repo.addUser(user);
     }
 
     public bool userExists(string email)

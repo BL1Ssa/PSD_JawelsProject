@@ -3,8 +3,6 @@ using JAwelsDiamond_PSD_Project.Models;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System;
-using System.Text.RegularExpressions;
 
 namespace JAwelsDiamond_PSD_Project.Controller
 {
@@ -38,8 +36,9 @@ namespace JAwelsDiamond_PSD_Project.Controller
 
         public string Register(string email, string username, string password, string confrimPass, string gender, DateTime dob)
         {
-            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            if(email == "" )
+            string emailPattern = @"^[^@\s]+@[^@\s]+\.com$";
+
+            if (email == "" )
             {
                 return "email must not be empty";
             }
@@ -51,7 +50,7 @@ namespace JAwelsDiamond_PSD_Project.Controller
             {
                 return "user with the same email already exist";
             }
-            else if (Regex.IsMatch(email, emailPattern))
+            else if (!Regex.IsMatch(email, emailPattern))
             {
                 return "email must be in the format of ...@<ProviderName>.com";
             }
@@ -126,12 +125,12 @@ namespace JAwelsDiamond_PSD_Project.Controller
             return DateTime.TryParse(dobStr, out dob) && dob < new DateTime(2010, 1, 1);
         }
 
-        public bool Register(string email, string username, string password, string gender, string dobStr)
-        {
-            if (!ValidateEmail(email) || !ValidateUsername(username) || !ValidatePassword(password) || !ValidateDOB(dobStr, out DateTime dob))
-                return false;
-            return handler.RegisterUser(email, username, password, gender, dob);
-        }
+        //public bool Register(string email, string username, string password, string gender, string dobStr)
+        //{
+        //    if (!ValidateEmail(email) || !ValidateUsername(username) || !ValidatePassword(password) || !ValidateDOB(dobStr, out DateTime dob))
+        //        return false;
+        //    return handler.RegisterUser(email, username, password, gender, dob);
+        //}
 
         public MsUser GetProfile(string userId)
         {

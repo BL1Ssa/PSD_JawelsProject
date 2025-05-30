@@ -24,12 +24,12 @@
 
             <asp:Label ID="passwordlbl" runat="server" Text="Password"></asp:Label>
             <br />
-            <asp:TextBox ID="passwordtb" runat="server"></asp:TextBox>
+            <asp:TextBox ID="passwordtb" runat="server" TextMode="Password"></asp:TextBox>
             <br />
 
             <asp:Label ID="confpassbl" runat="server" Text="Confirm Password"></asp:Label>
             <br />
-            <asp:TextBox ID="confpasstb" runat="server"></asp:TextBox>
+            <asp:TextBox ID="confpasstb" runat="server" TextMode="Password"></asp:TextBox>
             <br />
 
             <asp:Label ID="genderlbl" runat="server" Text="Gender"></asp:Label>

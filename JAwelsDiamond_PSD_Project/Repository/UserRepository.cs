@@ -1,15 +1,16 @@
 ﻿using JAwelsDiamond_PSD_Project.Models;
 using JAwelsDiamond_PSD_Project.Factory;
 using System.Linq;
+using System.Data.Entity.Core.Common.CommandTrees;
 
 namespace JAwelsDiamond_PSD_Project.Repository
 {
     public class UserRepository
     {
+        JawelsdatabaseEntities2 db = new JawelsdatabaseEntities2();
         public MsUser Login(string email, string password, out string errorMessage)
         {
-            using (var db = new JawelsdatabaseEntities2())
-            {
+
                 var user = db.MsUsers.FirstOrDefault(u => u.UserEmail == email && u.UserPassword == password);
                 if (user != null)
                 {
@@ -18,33 +19,31 @@ namespace JAwelsDiamond_PSD_Project.Repository
                 }
                 errorMessage = "Invalid email or password.";
                 return null;
-            }
+            
         }
 
         public MsUser GetUserByEmail(string email)
         {
-            using (var db = new JawelsdatabaseEntities2())
-            {
+
+            
                 return db.MsUsers.FirstOrDefault(u => u.UserEmail == email);
-            }
+            
         }
 
         public MsUser GetUserById(string userId)
         {
-            using (var db = new JawelsdatabaseEntities2())
-            {
+
                 int id;
                 if (int.TryParse(userId, out id))
                 {
                     return db.MsUsers.FirstOrDefault(u => u.UserID == id);
                 }
                 return null;
-            }
+            
         }
         public bool RemoveUser(MsUser user)
         {
-            using (var db = new JawelsdatabaseEntities2())
-            {
+
                 var existingUser = db.MsUsers.Find(user.UserID);
                 if (existingUser != null)
                 {
@@ -53,13 +52,12 @@ namespace JAwelsDiamond_PSD_Project.Repository
                     return true;
                 }
                 return false;
-            }
+            
         }
 
         public bool UpdateUser(MsUser newUser)
         {
-            using (var db = new JawelsdatabaseEntities2())
-            {
+
                 var existingUser = db.MsUsers.Find(newUser.UserID);
                 if (existingUser == null)
                 {
@@ -77,45 +75,47 @@ namespace JAwelsDiamond_PSD_Project.Repository
                     db.SaveChanges();
                     return true;
                 }
-            }
+            
+        }
+
+        public void addUser(MsUser user)
+        {
+            db.MsUsers.Add(user);
+            db.SaveChanges();
         }
 
         public bool FindUser(int id)
         {
-            using (var db = new JawelsdatabaseEntities2())
-            {
+
                 return db.MsUsers.Any(u => u.UserID == id);
-            }
+            
         }
 
         public int GetLastId()
         {
-            using (var db = new JawelsdatabaseEntities2())
-            {
+
                 var lastUser = db.MsUsers.OrderByDescending(u => u.UserID).FirstOrDefault();
                 return lastUser == null ? 1 : lastUser.UserID + 1;
-            }
+            
         }
 
         public bool EmailExists(string email)
         {
-            using (var db = new JawelsdatabaseEntities2())
-            {
+
                 return db.MsUsers.Any(u => u.UserEmail == email);
-            }
+            
         }
 
         public void UpdateUserPassword(int userId, string newPassword)
         {
-            using (var db = new JawelsdatabaseEntities2())
-            {
+
                 var user = db.MsUsers.FirstOrDefault(u => u.UserID == userId);
                 if (user != null)
                 {
                     user.UserPassword = newPassword;
                     db.SaveChanges();
                 }
-            }
+            
         }
     }
 }

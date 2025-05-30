@@ -15,12 +15,6 @@ namespace JAwelsDiamond_PSD_Project.Views
         OrderController controller = new OrderController();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserID"] == null || Session["UserRole"] as string != "customer")
-            {
-                Response.Redirect("~/Views/ErrorPage.aspx");
-                Response.End(); 
-            }
-
             if (!IsPostBack)
             {
                 checkUserSession();
