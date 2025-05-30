@@ -125,5 +125,46 @@ namespace JAwelsDiamond_PSD_Project.Repository
             TransactionDetail last = (from td in db.TransactionDetails select td).LastOrDefault();
             return last.TransactionID;
         }
+
+
+
+
+        // order handler methods Stip Punya
+        public IEnumerable<object> GetPendingOrders()
+        {
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                return db.TransactionHeaders
+                    .Where(th => th.TransactionStatus.ToLower() != "done" && th.TransactionStatus.ToLower() != "rejected")
+                    .Select(th => new
+                    {
+                        th.TransactionID,
+                        th.UserID,
+                        th.TransactionStatus
+                    })
+                    .ToList();
+            }
+        }
+
+        public TransactionHeader GetOrderById(int transactionId)
+        {
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                return db.TransactionHeaders.FirstOrDefault(th => th.TransactionID == transactionId);
+            }
+        }
+
+        public void UpdateOrder(TransactionHeader order)
+        {
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                var existing = db.TransactionHeaders.FirstOrDefault(th => th.TransactionID == order.TransactionID);
+                if (existing != null)
+                {
+                    existing.TransactionStatus = order.TransactionStatus;
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }
