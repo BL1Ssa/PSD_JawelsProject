@@ -7,41 +7,42 @@ using System.Web;
 
 namespace JAwelsDiamond_PSD_Project.Repository
 {
-	public class TransactionRepository
-	{
-		JawelsdatabaseEntities2 db = new JawelsdatabaseEntities2();
-		TransactionHeaderFactory thFactory = new TransactionHeaderFactory();
-		TransactionDetailFactory tdFactory = new TransactionDetailFactory();
+    public class TransactionRepository
+    {
+        JawelsdatabaseEntities2 db = new JawelsdatabaseEntities2();
+        TransactionHeaderFactory thFactory = new TransactionHeaderFactory();
+        TransactionDetailFactory tdFactory = new TransactionDetailFactory();
 
-		//create
-		public void addNewTransactionHeader(int transactionId, int userId, DateTime transactionDate, string paymentMethod, string transactionStatus)
-		{
-			TransactionHeader th = thFactory.createNewTransactionHeader(userId, transactionDate, paymentMethod, transactionStatus);
-			db.TransactionHeaders.Add(th);
-			db.SaveChanges();
-		}
+        //create
+        public void addNewTransactionHeader(int userId, DateTime transactionDate, string paymentMethod, string transactionStatus)
+        {
+            int transactionId = getLastHeaderId();
+            TransactionHeader th = thFactory.createTransactionHeader(transactionId, userId, transactionDate, paymentMethod, transactionStatus);
+            db.TransactionHeaders.Add(th);
+            db.SaveChanges();
+        }
 
-		public void addNewTransactionDetail(int transactionId, int jewelId, int quantity)
-		{
-			TransactionDetail td = tdFactory.createTransactionDetail(transactionId, jewelId, quantity);
-			db.TransactionDetails.Add(td);
-			db.SaveChanges();
-		}
+        public void addNewTransactionDetail(int transactionId, int jewelId, int quantity)
+        {
+            TransactionDetail td = tdFactory.createTransactionDetail(transactionId, jewelId, quantity);
+            db.TransactionDetails.Add(td);
+            db.SaveChanges();
+        }
 
         //read
         public List<TransactionHeader> getAllTransactions(int? userId = null)
-		{
-			if (userId != null)
-			{
-				return (from t in db.TransactionHeaders where t.UserID == userId select t).ToList();
-			}
-			return db.TransactionHeaders.ToList();
-		}
-		public TransactionHeader getTransactionHeader(int id)
-		{
-			TransactionHeader th = (from t in db.TransactionHeaders where t.TransactionID == id select t).FirstOrDefault();
-			return th;
-		}
+        {
+            if (userId != null)
+            {
+                return (from t in db.TransactionHeaders where t.UserID == userId select t).ToList();
+            }
+            return db.TransactionHeaders.ToList();
+        }
+        public TransactionHeader getTransactionHeader(int id)
+        {
+            TransactionHeader th = (from t in db.TransactionHeaders where t.TransactionID == id select t).FirstOrDefault();
+            return th;
+        }
         public TransactionDetail getTransactionDetail(int id)
         {
             TransactionDetail td = (from t in db.TransactionDetails where t.TransactionID == id select t).FirstOrDefault();
@@ -49,29 +50,29 @@ namespace JAwelsDiamond_PSD_Project.Repository
         }
 
 
-		//update
-		public bool updateTransactionHeader(TransactionHeader th)
-		{
-			TransactionHeader oldTh = db.TransactionHeaders.Find(th.TransactionID);
-			if(oldTh != null)
-			{
+        //update
+        public bool updateTransactionHeader(TransactionHeader th)
+        {
+            TransactionHeader oldTh = db.TransactionHeaders.Find(th.TransactionID);
+            if (oldTh != null)
+            {
                 oldTh.UserID = th.UserID;
                 oldTh.TransactionDate = th.TransactionDate;
                 oldTh.PaymentMethod = th.PaymentMethod;
                 oldTh.TransactionStatus = th.TransactionStatus;
                 db.SaveChanges();
-				return true;
+                return true;
             }
-			return false;
-		}
+            return false;
+        }
         public bool updateTransactionDetail(TransactionDetail td)
         {
             TransactionDetail oldTd = db.TransactionDetails.Find(td.TransactionID);
             if (oldTd != null)
             {
-				oldTd.JewelID = td.JewelID;
-				oldTd.Quantity = td.Quantity;
-				db.SaveChanges();
+                oldTd.JewelID = td.JewelID;
+                oldTd.Quantity = td.Quantity;
+                db.SaveChanges();
                 return true;
             }
             return false;
