@@ -114,5 +114,18 @@ namespace JAwelsDiamond_PSD_Project.Repository
                 return db.MsUsers.Any(u => u.UserEmail == email);
             }
         }
+
+        public void UpdateUserPassword(int userId, string newPassword)
+        {
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                var user = db.MsUsers.FirstOrDefault(u => u.UserID == userId);
+                if (user != null)
+                {
+                    user.UserPassword = newPassword;
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }

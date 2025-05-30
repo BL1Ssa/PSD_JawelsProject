@@ -53,5 +53,25 @@ namespace JAwelsDiamond_PSD_Project.Controller
                 return false;
             return handler.RegisterUser(email, username, password, gender, dob);
         }
+
+        public MsUser GetProfile(string userId)
+        {
+            return handler.GetUserById(userId);
+        }
+
+        public bool ValidateOldPassword(string userId, string oldPassword)
+        {
+            return handler.ValidateOldPassword(userId, oldPassword);
+        }
+
+        public bool ValidateNewPassword(string newPassword)
+        {
+            return Regex.IsMatch(newPassword, @"^[a-zA-Z0-9]{8,25}$");
+        }
+
+        public void ChangePassword(int userId, string newPassword)
+        {
+            handler.ChangePassword(userId, newPassword);
+        }
     }
 }

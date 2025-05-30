@@ -24,7 +24,7 @@
                 <a href="HomePage.aspx">Home</a>
                 <a href="Cart.aspx">Cart</a>
                 <a href="MyOrdersPage.aspx">My Orders</a>
-                <a href="Profile.aspx">Profile</a>
+                <a href="ProfilePage.aspx">Profile</a>
                 <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click">Logout</asp:LinkButton>
                 <asp:Label ID="lblUserCustomer" runat="server" />
             </asp:Panel>
@@ -34,7 +34,7 @@
                 <a href="AddJewel.aspx">Add Jewel</a>
                 <a href="Reports.aspx">Reports</a>
                 <a href="HandleOrders.aspx">Handle Orders</a>
-                <a href="Profile.aspx">Profile</a>
+                <a href="ProfilePage.aspx">Profile</a>
                 <asp:LinkButton ID="LinkButton1" runat="server" OnClick="btnLogout_Click">Logout</asp:LinkButton>
                 <asp:Label ID="lblUserAdmin" runat="server" />
             </asp:Panel>

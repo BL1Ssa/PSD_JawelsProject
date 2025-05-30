@@ -95,6 +95,7 @@
     <Content Include="Views\HomePage.aspx" />
     <Content Include="Views\AddJewel.aspx" />
     <Content Include="Views\MyOrdersPage.aspx" />
+    <Content Include="Views\ProfilePage.aspx" />
     <Content Include="Views\RegisterPage.aspx" />
     <Content Include="Views\ShowDetails.aspx" />
     <Content Include="Views\TransactionDetailsPage.aspx" />
@@ -200,6 +201,13 @@
     </Compile>
     <Compile Include="Views\MyOrdersPage.aspx.designer.cs">
       <DependentUpon>MyOrdersPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProfilePage.aspx.cs">
+      <DependentUpon>ProfilePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ProfilePage.aspx.designer.cs">
+      <DependentUpon>ProfilePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterPage.aspx.cs">
       <DependentUpon>RegisterPage.aspx</DependentUpon>

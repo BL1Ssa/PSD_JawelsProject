@@ -24,4 +24,17 @@ public class userHandler
         repo.AddUser(user);
         return true;
     }
+
+    public bool ValidateOldPassword(string userId, string oldPassword)
+    {
+        var user = repo.GetUserById(userId);
+        return user != null && user.UserPassword == oldPassword;
+    }
+
+    public void ChangePassword(int userId, string newPassword)
+    {
+        repo.UpdateUserPassword(userId, newPassword);
+    }
+
+
 }
