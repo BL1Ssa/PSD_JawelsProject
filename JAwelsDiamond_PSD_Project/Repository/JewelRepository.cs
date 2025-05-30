@@ -1,4 +1,6 @@
 ﻿using JAwelsDiamond_PSD_Project.Models;
+using JAwelsDiamond_PSD_Project.Factory;
+using System.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,14 +25,30 @@ namespace JAwelsDiamond_PSD_Project.Repository
             }
         }
 
+        //Revisi
         public List<MsJewel> GetAllJewels()
         {
-            return db.MsJewels.ToList();
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                
+                return db.MsJewels
+                        .Include("MsCategory")
+                        .Include("MsBrand")
+                        .ToList();
+            }
         }
 
+        //Revisi
         public MsJewel GetJewelById(int id)
         {
-            return db.MsJewels.Find(id);
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                
+                return db.MsJewels
+                        .Include("MsCategory")
+                        .Include("MsBrand")
+                        .FirstOrDefault(j => j.JewelID == id);
+            }
         }
 
         public bool UpdateJewel(MsJewel updatedJewel)
@@ -60,16 +78,15 @@ namespace JAwelsDiamond_PSD_Project.Repository
             return false;
         }
 
-        public int getLastId()
+
+        //Revisi
+        public int GetLastId()
         {
-            MsJewel lastJewel = (from j in db.MsJewels select j).LastOrDefault();
-            if(lastJewel == null)
+            using (var db = new JawelsdatabaseEntities2())
             {
-                return 1;
-            }
-            else
-            {
-                return lastJewel.JewelID + 1;
+                
+                MsJewel lastJewel = db.MsJewels.OrderByDescending(j => j.JewelID).FirstOrDefault();
+                return (lastJewel == null) ? 1 : lastJewel.JewelID + 1;
             }
         }
     }

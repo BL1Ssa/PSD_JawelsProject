@@ -1,4 +1,5 @@
 ﻿using JAwelsDiamond_PSD_Project.Handler;
+using JAwelsDiamond_PSD_Project.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,36 +11,27 @@ namespace JAwelsDiamond_PSD_Project.Views
 {
     public partial class ShowDetails : System.Web.UI.Page
     {
-        private JewelHandler _jewelHandler = new JewelHandler();
-        private int _jewelId;
+        private JewelController controller = new JewelController();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                // Get jewel ID from URL
-                string jewelIdStr = Request.QueryString["id"];
-                if (string.IsNullOrEmpty(jewelIdStr))
+                string jewelIdStr = Request.QueryString["JewelID"];
+                if (string.IsNullOrEmpty(jewelIdStr) || !int.TryParse(jewelIdStr, out int jewelId))
                 {
                     ShowNotFound();
                     return;
                 }
 
-                int jewelId;
-                if (!int.TryParse(jewelIdStr, out jewelId))
-                {
-                    ShowNotFound();
-                    return;
-                }
-
-                // Load jewel details
                 LoadJewelDetails(jewelId);
             }
         }
 
         private void LoadJewelDetails(int jewelId)
         {
-            JewelHandler handler = new JewelHandler();
-            var jewel = handler.GetJewelDetails(jewelId);
+            
+            var jewel = controller.GetJewelDetails(jewelId);
 
             if (jewel == null)
             {
@@ -47,7 +39,7 @@ namespace JAwelsDiamond_PSD_Project.Views
                 return;
             }
 
-            // Display details
+            
             lblName.Text = jewel.JewelName;
             lblCategory.Text = jewel.MsJewelCategory?.CategoryName ?? "-";
             lblBrand.Text = jewel.MsBrand?.BrandName ?? "-";
@@ -56,12 +48,18 @@ namespace JAwelsDiamond_PSD_Project.Views
             lblPrice.Text = jewel.JewelPrice.ToString();
             lblReleaseYear.Text = jewel.JewelReleaseYear.ToString();
 
-            // Show appropriate buttons based on user role
+
             if (Session["role"] != null)
             {
                 string role = Session["role"].ToString();
-                customerActions.Visible = (role == "Customer");
-                adminActions.Visible = (role == "Admin");
+                if (role == "admin")
+                {
+                    adminActions.Visible = true;
+                }
+                else if (role == "customer")
+                {
+                    customerActions.Visible = true;
+                }
             }
         }
 
@@ -71,28 +69,17 @@ namespace JAwelsDiamond_PSD_Project.Views
             notFoundMessage.Visible = true;
         }
 
-        protected void btnAddToCart_Click(object sender, EventArgs e)
-        {
-            int jewelId = int.Parse(Request.QueryString["id"]);
-            int userId = int.Parse(Session["userid"].ToString());
-
-            CartHandler cartHandler = new CartHandler();
-            cartHandler.AddToCart(userId, jewelId, 1);
-
-            Response.Redirect("Cart.aspx");
-        }
-
         protected void btnEdit_Click(object sender, EventArgs e)
         {
-            int jewelId = int.Parse(Request.QueryString["id"]);
+            int jewelId = int.Parse(Request.QueryString["JewelID"]);
             Response.Redirect($"UpdateJewel.aspx?id={jewelId}");
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            int jewelId = int.Parse(Request.QueryString["id"]);
-            JewelHandler handler = new JewelHandler();
-            handler.DeleteJewel(jewelId);
+            int jewelId = int.Parse(Request.QueryString["JewelID"]);
+            // Hapus jewel via controller
+            controller.DeleteJewel(jewelId);
 
             Response.Redirect("Homepage.aspx");
         }

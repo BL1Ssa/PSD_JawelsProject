@@ -14,6 +14,17 @@
                 <br />
                 <a href='<%# "ShowDetails.aspx?id=" + Eval("JewelID") %>'>View Details</a>
             </div>
+            <div>
+                <h3><%# Eval("JewelName") %></h3>
+                <p>Price: <%# Eval("JewelPrice") %></p>
+                <p>Release Year: <%# Eval("JewelReleaseYear") %></p>
+                    <asp:Button 
+                            ID="btnDetail" 
+                            runat="server" 
+                            Text="View Details" 
+                            PostBackUrl='<%# "ShowDetails.aspx?JewelID=" + Eval("JewelID") %>' />
+               </div>
+        
         </ItemTemplate>
     </asp:Repeater>
 </asp:Content>
