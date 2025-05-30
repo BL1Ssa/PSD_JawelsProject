@@ -59,7 +59,7 @@ namespace JAwelsDiamond_PSD_Project.Views
             int id = getId(e);
             if(e.CommandName == "View")
             { 
-                Response.Redirect("~/View/TransactionDetailsPage.aspx?id=" + id);
+                Response.Redirect("~/Views/TransactionDetailsPage.aspx?id=" + id);
                 return;
             }
             else if (e.CommandName == "confirm")
