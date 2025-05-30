@@ -12,10 +12,11 @@ namespace JAwelsDiamond_PSD_Project.Views
     public partial class Homepage : System.Web.UI.Page
     {
 
-        JewelController controller = new JewelController();
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
+            JewelController controller = new JewelController();
+
             if (!IsPostBack)
             {
               
