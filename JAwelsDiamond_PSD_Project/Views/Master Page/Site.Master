@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="JAwelsDiamond_PSD_Project.Site" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="JAwelsDiamond_PSD_Project.Views.Master_Page.Site" %>
 
 <!DOCTYPE html>
 <html>
@@ -15,27 +15,27 @@
     <form id="form1" runat="server">
         <div class="navbar">
             <asp:Panel ID="pnlGuest" runat="server" Visible="false">
-                <a href="Home.aspx">Home</a>
-                <a href="Login.aspx">Login</a>
-                <a href="Register.aspx">Register</a>
+                <a href="HomePage.aspx">Home</a>
+                <a href="LoginPage.aspx">Login</a>
+                <a href="RegisterPage.aspx">Register</a>
             </asp:Panel>
 
             <asp:Panel ID="pnlCustomer" runat="server" Visible="false">
-                <a href="Home.aspx">Home</a>
+                <a href="HomePage.aspx">Home</a>
                 <a href="Cart.aspx">Cart</a>
-                <a href="MyOrders.aspx">My Orders</a>
-                <a href="Profile.aspx">Profile</a>
-                <a href="Logout.aspx">Logout</a>
+                <a href="MyOrdersPage.aspx">My Orders</a>
+                <a href="ProfilePage.aspx">Profile</a>
+                <asp:LinkButton ID="lnkLogout" runat="server" OnClick="btnLogout_Click">Logout</asp:LinkButton>
                 <asp:Label ID="lblUserCustomer" runat="server" />
             </asp:Panel>
 
             <asp:Panel ID="pnlAdmin" runat="server" Visible="false">
-                <a href="Home.aspx">Home</a>
+                <a href="HomePage.aspx">Home</a>
                 <a href="AddJewel.aspx">Add Jewel</a>
                 <a href="Reports.aspx">Reports</a>
                 <a href="HandleOrders.aspx">Handle Orders</a>
-                <a href="Profile.aspx">Profile</a>
-                <a href="Logout.aspx">Logout</a>
+                <a href="ProfilePage.aspx">Profile</a>
+                <asp:LinkButton ID="lnkLogout2" runat="server" OnClick="btnLogout_Click">Logout</asp:LinkButton>
                 <asp:Label ID="lblUserAdmin" runat="server" />
             </asp:Panel>
         </div>

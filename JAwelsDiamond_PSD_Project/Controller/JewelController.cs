@@ -13,6 +13,15 @@ namespace JAwelsDiamond_PSD_Project.Controller
             return handler.GetJewelDetails(id);
         }
 
+        public List<MsCategory> getAllCategories()
+        {
+            return handler.getAllCategories();
+        }
+
+        public List<MsBrand> getAllBrands() 
+        {
+            return handler.getAllBrands();
+        }
         public MsCategory GetCategory(int id)
         {
             return handler.GetCategory(id);

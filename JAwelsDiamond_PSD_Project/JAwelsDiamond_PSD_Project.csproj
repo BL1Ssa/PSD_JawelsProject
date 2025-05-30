@@ -72,8 +72,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_data\JawelsDatabase.mdf" />
-    <Content Include="App_data\JawelsDatabase_log.ldf">
+    <Content Include="App_Data\JawelsDatabase.mdf" />
+    <Content Include="App_Data\JawelsDatabase_log.ldf">
       <DependentUpon>JawelsDatabase.mdf</DependentUpon>
     </Content>
     <Content Include="Models\JawelModel.Context.tt">

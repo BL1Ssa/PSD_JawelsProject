@@ -34,13 +34,13 @@ namespace JAwelsDiamond_PSD_Project.Views
 
         private void LoadDropdowns()
         {
-            ddlCategory.DataSource = jewelController.GetCategories();
+            ddlCategory.DataSource = jewelController.getAllCategories();
             ddlCategory.DataTextField = "CategoryName";
             ddlCategory.DataValueField = "CategoryID";
             ddlCategory.DataBind();
             ddlCategory.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select Category--", ""));
 
-            ddlBrand.DataSource = jewelController.GetBrands();
+            ddlBrand.DataSource = jewelController.getAllBrands();
             ddlBrand.DataTextField = "BrandName";
             ddlBrand.DataValueField = "BrandID";
             ddlBrand.DataBind();

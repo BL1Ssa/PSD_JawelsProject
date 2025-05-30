@@ -49,6 +49,10 @@ namespace JAwelsDiamond_PSD_Project.Handler
         {
             return repo.GetAllJewels();
         }
+        public List<MsCategory> getAllCategories()
+        {
+            return repo.GetCategories();
+        }
 
         public MsJewel GetJewelDetails(int jewelId)
         {
@@ -58,6 +62,11 @@ namespace JAwelsDiamond_PSD_Project.Handler
         public MsBrand getBrand(int id)
         {
             return brandRepo.GetBrandById(id);
+        }
+
+        public List<MsBrand> getAllBrands()
+        {
+            return repo.GetBrands();
         }
 
         public bool DeleteJewel(int jewelId)

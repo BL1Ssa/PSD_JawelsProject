@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JAwelsDiamond_PSD_Project
+namespace JAwelsDiamond_PSD_Project.Views.Master_Page
 {
 
 
@@ -42,13 +42,13 @@ namespace JAwelsDiamond_PSD_Project
         protected global::System.Web.UI.WebControls.Panel pnlCustomer;
 
         /// <summary>
-        /// btnLogout control.
+        /// lnkLogout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnLogout;
+        protected global::System.Web.UI.WebControls.LinkButton lnkLogout;
 
         /// <summary>
         /// lblUserCustomer control.
@@ -69,13 +69,13 @@ namespace JAwelsDiamond_PSD_Project
         protected global::System.Web.UI.WebControls.Panel pnlAdmin;
 
         /// <summary>
-        /// LinkButton1 control.
+        /// lnkLogout2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton lnkLogout2;
 
         /// <summary>
         /// lblUserAdmin control.

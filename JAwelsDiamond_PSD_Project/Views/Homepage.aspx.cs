@@ -21,8 +21,8 @@ namespace JAwelsDiamond_PSD_Project.Views
             {
               
                 var jewelList = controller.GetAllJewels();
-                rptJewels.DataSource = jewelList;
-                rptJewels.DataBind();
+                rptJewel.DataSource = jewelList;
+                rptJewel.DataBind();
             }
         }
     }
