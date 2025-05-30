@@ -10,17 +10,17 @@ namespace JAwelsDiamond_PSD_Project.Controller
 
         public MsJewel GetJewelById(int id)
         {
-            return handler.GetJewelById(id);
+            return handler.GetJewelDetails(id);
         }
 
-        public List<MsCategory> GetCategories()
+        public MsCategory GetCategory(int id)
         {
-            return handler.GetCategories();
+            return handler.GetCategory(id);
         }
 
-        public List<MsBrand> GetBrands()
+        public MsBrand GetBrand(int id)
         {
-            return handler.GetBrands();
+            return handler.getBrand(id);
         }
         //Tambahan Martin
         public List<MsJewel> GetAllJewels()

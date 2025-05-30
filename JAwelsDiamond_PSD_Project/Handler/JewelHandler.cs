@@ -13,6 +13,7 @@ namespace JAwelsDiamond_PSD_Project.Handler
     public class JewelHandler
     {
         private readonly JewelRepository repo;
+        BrandRepository brandRepo = new BrandRepository();
 
         public JewelHandler()
         {
@@ -54,10 +55,21 @@ namespace JAwelsDiamond_PSD_Project.Handler
             return repo.GetJewelById(jewelId);
         }
 
+        public MsBrand getBrand(int id)
+        {
+            return brandRepo.GetBrandById(id);
+        }
+
         public bool DeleteJewel(int jewelId)
         {
             return repo.DeleteJewel(jewelId);
         }
 
+        public MsCategory GetCategory(int jewelId)
+        {
+            return repo.getCategoryById(jewelId);
+        }
+
+        
     }
 }

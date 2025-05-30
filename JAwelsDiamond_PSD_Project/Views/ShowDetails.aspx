@@ -14,11 +14,11 @@
         <p><strong>Price:</strong> $<asp:Label ID="lblPrice" runat="server"></asp:Label></p>
         <p><strong>Release Year:</strong> <asp:Label ID="lblReleaseYear" runat="server"></asp:Label></p>
         
-        <%-- 
+         
         <div id="customerActions" runat="server" visible="false">
             <asp:Button ID="btnAddToCart" runat="server" Text="Add to Cart" OnClick="btnAddToCart_Click" />
         </div>
-        --%>
+        
         
         <div id="adminActions" runat="server" visible="false">
             <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" />

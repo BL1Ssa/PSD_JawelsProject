@@ -8,6 +8,7 @@ namespace JAwelsDiamond_PSD_Project.Repository
 {
     public class JewelRepository
     {
+        JawelsdatabaseEntities2 db = new JawelsdatabaseEntities2();
         public List<MsCategory> GetCategories()
         {
             using (var db = new JawelsdatabaseEntities2())
@@ -120,6 +121,12 @@ namespace JAwelsDiamond_PSD_Project.Repository
                     return lastJewel.JewelID + 1;
                 }
             }
+        }
+
+        public MsCategory getCategoryById(int id)
+        {
+            MsCategory cat = db.MsCategories.Find(id);
+            return cat;
         }
     }
 }

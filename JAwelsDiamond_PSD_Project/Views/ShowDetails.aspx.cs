@@ -2,10 +2,13 @@
 using JAwelsDiamond_PSD_Project.Controller;
 using System;
 using System.Collections.Generic;
+using System.Web.UI.HtmlControls;
+
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using JAwelsDiamond_PSD_Project.Models;
 
 namespace JAwelsDiamond_PSD_Project.Views
 {
@@ -25,7 +28,6 @@ namespace JAwelsDiamond_PSD_Project.Views
                     return;
                 }
 
-                int jewelId;
                 if (!int.TryParse(jewelIdStr, out jewelId))
                 {
                     ShowNotFound();
@@ -40,7 +42,6 @@ namespace JAwelsDiamond_PSD_Project.Views
         private void LoadJewelDetails(int jewelId)
         {
             JewelHandler handler = new JewelHandler();
-            var jewel = handler.GetJewelDetails(jewelId);
             
             var jewel = controller.GetJewelDetails(jewelId);
 
@@ -50,12 +51,15 @@ namespace JAwelsDiamond_PSD_Project.Views
                 return;
             }
 
+
+            MsCategory category = handler.GetCategory(jewel.CategoryID);
+            MsBrand brand = handler.getBrand(jewel.BrandID);
             
             lblName.Text = jewel.JewelName;
-            lblCategory.Text = jewel.MsJewelCategory?.CategoryName ?? "-";
-            lblBrand.Text = jewel.MsBrand?.BrandName ?? "-";
-            lblCountry.Text = jewel.MsBrand?.Country ?? "-";
-            lblClass.Text = jewel.MsBrand?.Class ?? "-";
+            lblCategory.Text = category.CategoryName;
+            lblBrand.Text = brand.BrandName;
+            lblCountry.Text = brand.BrandCountry;
+            lblClass.Text = brand.BrandClass;
             lblPrice.Text = jewel.JewelPrice.ToString();
             lblReleaseYear.Text = jewel.JewelReleaseYear.ToString();
 
@@ -104,6 +108,11 @@ namespace JAwelsDiamond_PSD_Project.Views
             controller.DeleteJewel(jewelId);
 
             Response.Redirect("Homepage.aspx");
+        }
+
+        protected void btnAddToCart_Click(object sender, EventArgs e)
+        {
+            //Response.Redirect("")
         }
     }
 }
