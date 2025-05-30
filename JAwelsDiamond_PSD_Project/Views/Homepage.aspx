@@ -10,6 +10,7 @@
     <form id="form1" runat="server">
         <div>
             <asp:Button ID="BtnRedirAddJewel" runat="server" Text="Add Jewel" PostBackUrl="~/Views/AddJewel.aspx" />
+            <asp:Button ID="BtnRedirHandleOrder" runat="server" Text="Handle Jewel" PostBackUrl="~/Views/HandleOrders.aspx" />
 
             <asp:GridView ID="gvJewels" runat="server" AutoGenerateColumns="False">
                 <Columns>

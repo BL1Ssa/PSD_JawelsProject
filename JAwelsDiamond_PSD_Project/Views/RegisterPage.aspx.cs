@@ -25,7 +25,7 @@ namespace JAwelsDiamond_PSD_Project.Views
 
             if (Session["UserID"] != null)
             {
-                Response.Redirect("Home.aspx");
+                Response.Redirect("ErrorPage.aspx");
             }
         }
 
