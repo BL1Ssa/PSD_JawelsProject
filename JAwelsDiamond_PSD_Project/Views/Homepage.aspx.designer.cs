@@ -11,7 +11,7 @@ namespace JAwelsDiamond_PSD_Project.Views
 {
 
 
-    public partial class HomePage
+    public partial class Home
     {
 
         /// <summary>

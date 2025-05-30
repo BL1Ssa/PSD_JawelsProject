@@ -21,14 +21,14 @@ namespace JAwelsDiamond_PSD_Project.Controller
             }
         }
 
-        public void rejectPackage(int id)
-        {
-            bool exists = handler.transactionExists(id);
-            if (exists)
+            public void rejectPackage(int id)
             {
-                handler.rejectPackage(id);
+                bool exists = handler.transactionExists(id);
+                if (exists)
+                {
+                    handler.rejectPackage(id);
+                }
             }
-        }
 
         public List<TransactionHeader> getAllTransaction(int id)
         {

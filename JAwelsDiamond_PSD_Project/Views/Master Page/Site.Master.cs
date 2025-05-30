@@ -32,7 +32,7 @@ namespace JAwelsDiamond_PSD_Project.Views.Master_Page
                     }
                 }
         }
-
+            
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Clear();

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JAwelsDiamond_PSD_Project.Views.Master_Page
+namespace JAwelsDiamond_PSD_Project
 {
 
 

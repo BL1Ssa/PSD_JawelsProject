@@ -1,4 +1,6 @@
-﻿<%@ Page Title="Jewel Details" Language="C#" MasterPageFile="~/Views/Master Page/Site.Master" AutoEventWireup="true" CodeBehind="ShowDetails.aspx.cs" Inherits="JAwelsDiamond_PSD_Project.Views.ShowDetails" %>
+﻿<%@ Page Title="Jewel Details" Language="C#" MasterPageFile="~/Views/Master Page/Site.Master" 
+    AutoEventWireup="true" CodeBehind="ShowDetails.aspx.cs" 
+    Inherits="JAwelsDiamond_PSD_Project.Views.ShowDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Jewel Details</h2>

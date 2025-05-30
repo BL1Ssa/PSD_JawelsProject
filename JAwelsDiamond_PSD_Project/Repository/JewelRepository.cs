@@ -44,6 +44,7 @@ namespace JAwelsDiamond_PSD_Project.Repository
             }
         }
 
+        //Revisi
         public List<MsJewel> GetAllJewels()
         {
             using (var db = new JawelsdatabaseEntities2())
@@ -52,11 +53,20 @@ namespace JAwelsDiamond_PSD_Project.Repository
             }
         }
 
+        //Revisi
         public MsJewel GetJewelById(int id)
         {
             using (var db = new JawelsdatabaseEntities2())
             {
                 return db.MsJewels.FirstOrDefault(j => j.JewelID == id);
+            }
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                
+                return db.MsJewels
+                        .Include("MsCategory")
+                        .Include("MsBrand")
+                        .FirstOrDefault(j => j.JewelID == id);
             }
         }
 

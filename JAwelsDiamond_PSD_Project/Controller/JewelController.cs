@@ -22,6 +22,22 @@ namespace JAwelsDiamond_PSD_Project.Controller
         {
             return handler.GetBrands();
         }
+        //Tambahan Martin
+        public List<MsJewel> GetAllJewels()
+        {
+            return handler.GetAllJewels();
+        }
+
+        public MsJewel GetJewelDetails(int jewelId)
+        {
+            return handler.GetJewelDetails(jewelId);
+        }
+
+        public bool DeleteJewel(int jewelId)
+        {
+            return handler.DeleteJewel(jewelId);
+        }
+        //Berenti Sampe DeletJewel
 
         public bool ValidateJewelName(string name)
         {

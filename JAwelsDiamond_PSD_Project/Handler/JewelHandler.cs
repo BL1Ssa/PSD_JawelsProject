@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JAwelsDiamond_PSD_Project.Models;
+using JAwelsDiamond_PSD_Project.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,29 +9,14 @@ using JAwelsDiamond_PSD_Project.Models;
 
 namespace JAwelsDiamond_PSD_Project.Handler
 {
+
     public class JewelHandler
     {
-        private JewelRepository repo = new JewelRepository();
-        
+        private readonly JewelRepository repo;
 
-        public MsJewel GetJewelById(int id)
+        public JewelHandler()
         {
-            return repo.GetJewelById(id);
-        }
-
-        public List<MsCategory> GetCategories()
-        {
-            return repo.GetCategories();
-        }
-
-        public List<MsBrand> GetBrands()
-        {
-            return repo.GetBrands();
-        }
-
-        public bool ValidateJewelName(string name)
-        {
-            return !string.IsNullOrEmpty(name) && name.Length >= 3 && name.Length <= 25;
+            repo = new JewelRepository();
         }
 
         public bool ValidateReleaseYear(string yearStr)
@@ -56,31 +43,21 @@ namespace JAwelsDiamond_PSD_Project.Handler
 
 
 
-        //Punya Martin
-        private JawelsdatabaseEntities2 db = new JawelsdatabaseEntities2(); // ini benerin co z db nya di repo ga ada
+        // Revisi "Punya Martin"
         public List<MsJewel> GetAllJewels()
         {
-            return db.MsJewels.ToList();
+            return repo.GetAllJewels();
         }
 
         public MsJewel GetJewelDetails(int jewelId)
         {
-            return db.MsJewels
-                .Include("MsCategory")
-                .Include("MsBrand")    
-                .FirstOrDefault(j => j.JewelID == jewelId);
+            return repo.GetJewelById(jewelId);
         }
 
         public bool DeleteJewel(int jewelId)
         {
-            var jewel = db.MsJewels.Find(jewelId);
-            if (jewel != null)
-            {
-                db.MsJewels.Remove(jewel);
-                db.SaveChanges();
-                return true;
-            }
-            return false;
+            return repo.DeleteJewel(jewelId);
         }
+
     }
 }
