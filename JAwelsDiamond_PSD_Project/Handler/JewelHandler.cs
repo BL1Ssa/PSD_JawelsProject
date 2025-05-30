@@ -10,7 +10,7 @@ namespace JAwelsDiamond_PSD_Project.Handler
     public class JewelHandler
     {
         private JewelRepository repo = new JewelRepository();
-        private JawelsdatabaseEntities2 db = new JawelsdatabaseEntities2();
+        
 
         public MsJewel GetJewelById(int id)
         {
@@ -57,6 +57,7 @@ namespace JAwelsDiamond_PSD_Project.Handler
 
 
         //Punya Martin
+        private JawelsdatabaseEntities2 db = new JawelsdatabaseEntities2(); // ini benerin co z db nya di repo ga ada
         public List<MsJewel> GetAllJewels()
         {
             return db.MsJewels.ToList();
