@@ -39,7 +39,7 @@ namespace JAwelsDiamond_PSD_Project.Views
 
             if (Session["UserID"] != null)
             {
-                Response.Redirect("HomePage.aspx");
+                Response.Redirect("~/Views/HomePage.aspx");
             }
         }
 
@@ -72,6 +72,12 @@ namespace JAwelsDiamond_PSD_Project.Views
                 lblError.Text = errorMessage;
                 lblError.Visible = true;
             }
+        }
+
+        protected void makeAccountLink_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/RegisterPage.aspx");
+            return;
         }
     }
 }

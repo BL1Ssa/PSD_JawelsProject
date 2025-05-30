@@ -41,16 +41,6 @@ namespace JAwelsDiamond_PSD_Project.Repository
                 return null;
             }
         }
-
-        public void AddUser(MsUser user)
-        {
-            using (var db = new JawelsdatabaseEntities2())
-            {
-                db.MsUsers.Add(user);
-                db.SaveChanges();
-            }
-        }
-
         public bool RemoveUser(MsUser user)
         {
             using (var db = new JawelsdatabaseEntities2())

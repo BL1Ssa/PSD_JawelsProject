@@ -18,7 +18,8 @@ namespace JAwelsDiamond_PSD_Project.Factory
             th.PaymentMethod = paymentMethod;
             th.TransactionStatus = transactionStatus;
 
-            return th;
-        }
+			return th;
+		}
+
     }
 }
