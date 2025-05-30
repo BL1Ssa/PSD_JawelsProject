@@ -1,4 +1,4 @@
-﻿/*using JAwelsDiamond_PSD_Project.Handler;
+﻿using JAwelsDiamond_PSD_Project.Handler;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace JAwelsDiamond_PSD_Project.Views
             if (!IsPostBack)
             {
                 // Get jewel ID from URL
-                string jewelIdStr = Request.QueryString["id"];
+                string jewelIdStr = Request.QueryString["JewelID"];
                 if (string.IsNullOrEmpty(jewelIdStr))
                 {
                     ShowNotFound();
@@ -60,8 +60,8 @@ namespace JAwelsDiamond_PSD_Project.Views
             if (Session["role"] != null)
             {
                 string role = Session["role"].ToString();
-                customerActions.Visible = (role == "Customer");
-                adminActions.Visible = (role == "Admin");
+                /*customerActions.Visible = (role == "customer");*/
+                adminActions.Visible = (role == "admin");
             }
         }
 
@@ -71,30 +71,30 @@ namespace JAwelsDiamond_PSD_Project.Views
             notFoundMessage.Visible = true;
         }
 
-        protected void btnAddToCart_Click(object sender, EventArgs e)
-        {
-            int jewelId = int.Parse(Request.QueryString["id"]);
-            int userId = int.Parse(Session["userid"].ToString());
+        //protected void btnAddToCart_Click(object sender, EventArgs e)
+        //{
+        //    int jewelId = int.Parse(Request.QueryString["id"]);
+        //    int userId = int.Parse(Session["userid"].ToString());
 
-            CartHandler cartHandler = new CartHandler();
-            cartHandler.AddToCart(userId, jewelId, 1);
+        //    CartHandler cartHandler = new CartHandler();
+        //    cartHandler.AddToCart(userId, jewelId, 1);
 
-            Response.Redirect("Cart.aspx");
-        }
+        //    Response.Redirect("Cart.aspx");
+        //}
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
-            int jewelId = int.Parse(Request.QueryString["id"]);
+            int jewelId = int.Parse(Request.QueryString["JawelID"]);
             Response.Redirect($"UpdateJewel.aspx?id={jewelId}");
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            int jewelId = int.Parse(Request.QueryString["id"]);
+            int jewelId = int.Parse(Request.QueryString["JawelID"]);
             JewelHandler handler = new JewelHandler();
             handler.DeleteJewel(jewelId);
 
-            Response.Redirect("Homepage.aspx");
+            Response.Redirect("HomePage.aspx");
         }
     }
-}*/
+}

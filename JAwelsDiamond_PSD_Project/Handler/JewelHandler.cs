@@ -66,8 +66,8 @@ namespace JAwelsDiamond_PSD_Project.Handler
         public MsJewel GetJewelDetails(int jewelId)
         {
             return db.MsJewels
-                .Include("MsJewelCategory")
-                .Include("MsBrand")
+                .Include("MsCategory")
+                .Include("MsBrand")    
                 .FirstOrDefault(j => j.JewelID == jewelId);
         }
 
