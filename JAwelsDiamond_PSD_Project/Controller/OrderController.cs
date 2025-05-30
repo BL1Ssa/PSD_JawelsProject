@@ -40,5 +40,16 @@ namespace JAwelsDiamond_PSD_Project.Controller
             return handler.getTransactionDetail(transactionId);
         }
 
+
+        //OrderHandler Stip Punya
+        public IEnumerable<object> GetPendingOrders()
+        {
+            return handler.GetPendingOrders();
+        }
+
+        public void ChangeOrderStatus(int transactionId, string command)
+        {
+            handler.ChangeOrderStatus(transactionId, command);
+        }
     }
 }

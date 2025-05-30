@@ -90,6 +90,7 @@
       <LastGenOutput>JawelModel.cs</LastGenOutput>
     </Content>
     <Content Include="Views\ErrorPage.aspx" />
+    <Content Include="Views\HandleOrders.aspx" />
     <Content Include="Views\LoginPage.aspx" />
     <Content Include="Views\HomePage.aspx" />
     <Content Include="Views\AddJewel.aspx" />
@@ -156,6 +157,13 @@
     </Compile>
     <Compile Include="Views\ErrorPage.aspx.designer.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HandleOrders.aspx.cs">
+      <DependentUpon>HandleOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\HandleOrders.aspx.designer.cs">
+      <DependentUpon>HandleOrders.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
