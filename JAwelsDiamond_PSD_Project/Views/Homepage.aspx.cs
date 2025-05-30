@@ -1,21 +1,24 @@
-﻿using System;
+﻿using JAwelsDiamond_PSD_Project.Handler;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using JAwelsDiamond_PSD_Project.Models;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace JAwelsDiamond_PSD_Project.Views
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class HomePage : System.Web.UI.Page
     {
+        JewelHandler handler = new JewelHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
-                using (var db = new JawelsdatabaseEntities2())
-                {
-                    var jewels = db.MsJewels.Select(j => new { j.JewelID }).ToList();
-                    gvJewels.DataSource = jewels;
-                    gvJewels.DataBind();
-                }
+                var jewelList = handler.GetAllJewels();
+                rptJewels.DataSource = jewelList;
+                rptJewels.DataBind();
             }
         }
     }

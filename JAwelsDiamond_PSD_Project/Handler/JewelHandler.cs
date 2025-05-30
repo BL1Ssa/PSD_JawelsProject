@@ -10,6 +10,7 @@ namespace JAwelsDiamond_PSD_Project.Handler
     public class JewelHandler
     {
         private JewelRepository repo = new JewelRepository();
+        private JawelsdatabaseEntities2 db = new JawelsdatabaseEntities2();
 
         public MsJewel GetJewelById(int id)
         {
@@ -51,6 +52,34 @@ namespace JAwelsDiamond_PSD_Project.Handler
         {
             int price;
             return int.TryParse(priceStr, out price) && price > 25;
+        }
+
+
+
+        //Punya Martin
+        public List<MsJewel> GetAllJewels()
+        {
+            return db.MsJewels.ToList();
+        }
+
+        public MsJewel GetJewelDetails(int jewelId)
+        {
+            return db.MsJewels
+                .Include("MsJewelCategory")
+                .Include("MsBrand")
+                .FirstOrDefault(j => j.JewelID == jewelId);
+        }
+
+        public bool DeleteJewel(int jewelId)
+        {
+            var jewel = db.MsJewels.Find(jewelId);
+            if (jewel != null)
+            {
+                db.MsJewels.Remove(jewel);
+                db.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }
