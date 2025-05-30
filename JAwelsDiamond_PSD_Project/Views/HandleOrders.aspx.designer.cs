@@ -11,7 +11,7 @@ namespace JAwelsDiamond_PSD_Project.Views
 {
 
 
-    public partial class MyOrdersPage
+    public partial class HandleOrders
     {
 
         /// <summary>
@@ -24,21 +24,21 @@ namespace JAwelsDiamond_PSD_Project.Views
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// OrdersGV control.
+        /// lblError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView OrdersGV;
+        protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
-        /// backbtn control.
+        /// gvOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button backbtn;
+        protected global::System.Web.UI.WebControls.GridView gvOrders;
     }
 }

@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using JAwelsDiamond_PSD_Project.Repository;
+using JAwelsDiamond_PSD_Project.Models;
 
 namespace JAwelsDiamond_PSD_Project.Handler
 {

@@ -1,30 +1,24 @@
 ﻿using JAwelsDiamond_PSD_Project.Models;
 using JAwelsDiamond_PSD_Project.Repository;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace JAwelsDiamond_PSD_Project.Handler
+namespace jawelsdiamond_psd_project.handler
 {
 	public class OrderHandler
 	{
 		TransactionRepository repo = new TransactionRepository();
-
-		public bool confirmPackage(int id)
+		public void confirmPackage(int id)
 		{
 			TransactionHeader th = repo.getTransactionHeader(id);
 			th.TransactionStatus = "done";
 			bool response = repo.updateTransactionHeader(th);
-			return response;
 		}
 
-		public bool rejectPackage(int id)
+		public void rejectPackage(int id)
 		{
 			TransactionHeader th = repo.getTransactionHeader(id);
 			th.TransactionStatus = "rejected";
 			bool response = repo.updateTransactionHeader(th);
-			return response;
 		}
 
 		public bool transactionExists(int id)
@@ -37,10 +31,44 @@ namespace JAwelsDiamond_PSD_Project.Handler
 			return true;
         }
 
-		public List<TransactionHeader> getAllTransactions(int userId)
+		public List<TransactionHeader> getAllTransactions(int userid)
 		{
-			List<TransactionHeader> allTh = repo.getAllTransactions(userId);
-			return allTh;
+			List<TransactionHeader> allth = repo.getAllTransactions(userid);
+			return allth;
+		}
+
+		public TransactionDetail getTransactionDetail(int transactionId)
+		{
+			TransactionDetail transactionDetail = repo.getTransactionDetail(transactionId);
+			return transactionDetail;
 		}
 	}
+
+
+
+        // Order Handler Methods
+        public IEnumerable<object> GetPendingOrders()
+        {
+            return repo.GetPendingOrders();
+        }
+
+        public void ChangeOrderStatus(int transactionId, string command)
+        {
+            var order = repo.GetOrderById(transactionId);
+            if (order == null) return;
+
+            string status = order.TransactionStatus.ToLower();
+
+            if (command == "ConfirmPayment" && status == "payment pending")
+            {
+                order.TransactionStatus = "shipment pending";
+                repo.UpdateOrder(order);
+            }
+            else if (command == "ShipPackage" && status == "shipment pending")
+            {
+                order.TransactionStatus = "arrived";
+                repo.UpdateOrder(order);
+            }
+        }
+    }
 }

@@ -11,7 +11,7 @@ namespace JAwelsDiamond_PSD_Project.Views
 {
 
 
-    public partial class Register
+    public partial class UpdateJewel
     {
 
         /// <summary>
@@ -24,129 +24,156 @@ namespace JAwelsDiamond_PSD_Project.Views
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// emaillbl control.
+        /// lblError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label emaillbl;
+        protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
-        /// emailtb control.
+        /// lblSuccess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox emailtb;
+        protected global::System.Web.UI.WebControls.Label lblSuccess;
 
         /// <summary>
-        /// namelbl control.
+        /// txtJewelName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label namelbl;
+        protected global::System.Web.UI.WebControls.TextBox txtJewelName;
 
         /// <summary>
-        /// nametb control.
+        /// rfvJewelName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nametb;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvJewelName;
 
         /// <summary>
-        /// passwordlbl control.
+        /// cvJewelName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label passwordlbl;
+        protected global::System.Web.UI.WebControls.CustomValidator cvJewelName;
 
         /// <summary>
-        /// passwordtb control.
+        /// ddlCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passwordtb;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
 
         /// <summary>
-        /// confpassbl control.
+        /// rfvCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label confpassbl;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCategory;
 
         /// <summary>
-        /// confpasstb control.
+        /// ddlBrand control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox confpasstb;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBrand;
 
         /// <summary>
-        /// genderlbl control.
+        /// rfvBrand control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label genderlbl;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvBrand;
 
         /// <summary>
-        /// genderRadio control.
+        /// txtPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList genderRadio;
+        protected global::System.Web.UI.WebControls.TextBox txtPrice;
 
         /// <summary>
-        /// calendarlbl control.
+        /// rfvPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label calendarlbl;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPrice;
 
         /// <summary>
-        /// dateCalendar control.
+        /// rvPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar dateCalendar;
+        protected global::System.Web.UI.WebControls.RangeValidator rvPrice;
 
         /// <summary>
-        /// messagelbl control.
+        /// txtReleaseYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label messagelbl;
+        protected global::System.Web.UI.WebControls.TextBox txtReleaseYear;
 
         /// <summary>
-        /// registerbtn control.
+        /// rfvReleaseYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button registerbtn;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvReleaseYear;
+
+        /// <summary>
+        /// cvReleaseYear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvReleaseYear;
+
+        /// <summary>
+        /// btnUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
+
+        /// <summary>
+        /// btnGoBack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGoBack;
     }
 }

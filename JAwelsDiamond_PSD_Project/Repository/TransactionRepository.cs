@@ -9,14 +9,15 @@ namespace JAwelsDiamond_PSD_Project.Repository
 {
 	public class TransactionRepository
 	{
-		JawelsDatabaseEntities db = new JawelsDatabaseEntities();
+		JawelsdatabaseEntities2 db = new JawelsdatabaseEntities2();
 		TransactionHeaderFactory thFactory = new TransactionHeaderFactory();
 		TransactionDetailFactory tdFactory = new TransactionDetailFactory();
 
 		//create
-		public void addNewTransactionHeader(int transactionId, int userId, DateTime transactionDate, string paymentMethod, string transactionStatus)
+		public void addNewTransactionHeader(int userId, DateTime transactionDate, string paymentMethod, string transactionStatus)
 		{
-			TransactionHeader th = thFactory.createNewTransactionHeader(userId, transactionDate, paymentMethod, transactionStatus);
+            int transactionId = getLastHeaderId();
+			TransactionHeader th = thFactory.createTransactionHeader(transactionId, userId, transactionDate, paymentMethod, transactionStatus);
 			db.TransactionHeaders.Add(th);
 			db.SaveChanges();
 		}
@@ -114,15 +115,56 @@ namespace JAwelsDiamond_PSD_Project.Repository
 
         //helper
         public int getLastHeaderId()
-		{
-			TransactionHeader last = (from th in db.TransactionHeaders select th).LastOrDefault();
-			return last.TransactionID;
-		}
+        {
+            TransactionHeader last = (from th in db.TransactionHeaders select th).Last();
+            return last.TransactionID;
+        }
 
-		public int getLastDetailId()
-		{
-			TransactionDetail last = (from td in db.TransactionDetails select td).LastOrDefault();
-			return last.TransactionID;
-		}
-	}
+        public int getLastDetailId()
+        {
+            TransactionDetail last = (from td in db.TransactionDetails select td).LastOrDefault();
+            return last.TransactionID;
+        }
+
+
+
+
+        // order handler methods Stip Punya
+        public IEnumerable<object> GetPendingOrders()
+        {
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                return db.TransactionHeaders
+                    .Where(th => th.TransactionStatus.ToLower() != "done" && th.TransactionStatus.ToLower() != "rejected")
+                    .Select(th => new
+                    {
+                        th.TransactionID,
+                        th.UserID,
+                        th.TransactionStatus
+                    })
+                    .ToList();
+            }
+        }
+
+        public TransactionHeader GetOrderById(int transactionId)
+        {
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                return db.TransactionHeaders.FirstOrDefault(th => th.TransactionID == transactionId);
+            }
+        }
+
+        public void UpdateOrder(TransactionHeader order)
+        {
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                var existing = db.TransactionHeaders.FirstOrDefault(th => th.TransactionID == order.TransactionID);
+                if (existing != null)
+                {
+                    existing.TransactionStatus = order.TransactionStatus;
+                    db.SaveChanges();
+                }
+            }
+        }
+    }
 }

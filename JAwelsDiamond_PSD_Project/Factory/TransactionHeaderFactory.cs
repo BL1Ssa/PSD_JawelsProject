@@ -9,7 +9,6 @@ namespace JAwelsDiamond_PSD_Project.Factory
 {
 	public class TransactionHeaderFactory
 	{
-		TransactionRepository repo = new TransactionRepository();
 		public TransactionHeader createTransactionHeader(int transactionId, int userId, DateTime transactionDate, string paymentMethod, string transactionStatus)
 		{
 			TransactionHeader th = new TransactionHeader();
@@ -22,19 +21,5 @@ namespace JAwelsDiamond_PSD_Project.Factory
 			return th;
 		}
 
-        public TransactionHeader createNewTransactionHeader(int userId, DateTime transactionDate, string paymentMethod, string transactionStatus)
-        {
-            int id = repo.getLastHeaderId();
-
-
-            TransactionHeader th = new TransactionHeader();
-            th.TransactionID = id;
-            th.UserID = userId;
-            th.TransactionDate = transactionDate;
-            th.PaymentMethod = paymentMethod;
-            th.TransactionStatus = transactionStatus;
-
-            return th;
-        }
     }
 }
