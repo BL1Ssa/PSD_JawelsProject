@@ -1,5 +1,7 @@
 using JAwelsDiamond_PSD_Project.Handler;
 using JAwelsDiamond_PSD_Project.Models;
+using System;
+using System.Text.RegularExpressions;
 
 namespace JAwelsDiamond_PSD_Project.Controller
 {
@@ -29,6 +31,27 @@ namespace JAwelsDiamond_PSD_Project.Controller
         public MsUser GetUserById(string userId)
         {
             return handler.GetUserById(userId);
+        }
+
+        public bool ValidateEmail(string email) =>
+            !string.IsNullOrWhiteSpace(email) && email.Contains("@");
+
+        public bool ValidateUsername(string username) =>
+            username.Length >= 3 && username.Length <= 25;
+
+        public bool ValidatePassword(string password) =>
+            Regex.IsMatch(password, @"^[a-zA-Z0-9]{8,20}$");
+
+        public bool ValidateDOB(string dobStr, out DateTime dob)
+        {
+            return DateTime.TryParse(dobStr, out dob) && dob < new DateTime(2010, 1, 1);
+        }
+
+        public bool Register(string email, string username, string password, string gender, string dobStr)
+        {
+            if (!ValidateEmail(email) || !ValidateUsername(username) || !ValidatePassword(password) || !ValidateDOB(dobStr, out DateTime dob))
+                return false;
+            return handler.RegisterUser(email, username, password, gender, dob);
         }
     }
 }

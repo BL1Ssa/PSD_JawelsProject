@@ -106,5 +106,13 @@ namespace JAwelsDiamond_PSD_Project.Repository
                 return lastUser == null ? 1 : lastUser.UserID + 1;
             }
         }
+
+        public bool EmailExists(string email)
+        {
+            using (var db = new JawelsdatabaseEntities2())
+            {
+                return db.MsUsers.Any(u => u.UserEmail == email);
+            }
+        }
     }
 }

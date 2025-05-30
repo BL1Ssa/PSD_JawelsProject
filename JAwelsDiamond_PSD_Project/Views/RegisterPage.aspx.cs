@@ -1,13 +1,13 @@
-﻿using JAwelsDiamond_PSD_Project.Models;
+﻿using JAwelsDiamond_PSD_Project.Controller;
 using System;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web.UI;
 
 namespace JAwelsDiamond_PSD_Project.Views
 {
-    public partial class RegisterPage : Page
+    public partial class RegisterPage : System.Web.UI.Page
     {
+        private readonly UserController _controller = new UserController();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (ScriptManager.ScriptResourceMapping.GetDefinition("jquery") == null)
@@ -26,57 +26,45 @@ namespace JAwelsDiamond_PSD_Project.Views
 
             if (Session["UserID"] != null)
             {
-                Response.Redirect("Home.aspx");
+                Response.Redirect("HomePage.aspx");
+            }
+        }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            
+            if (Page.IsValid)
+            {
+                if (_controller.Register(txtEmail.Text.Trim(), txtUsername.Text.Trim(), txtPassword.Text, rblGender.SelectedValue, txtDOB.Text))
+                {
+                    Response.Redirect("LoginPage.aspx");
+                }
+                else
+                {
+                    lblError.Text = "Registration failed. Please check your input or try again.";
+                }
             }
         }
 
         protected void CustomEmail_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
         {
-            string email = args.Value.Trim();
-            using (var db = new JawelsdatabaseEntities2()) 
-            {
-                args.IsValid = !db.MsUsers.Any(u => u.UserEmail == email);
-            }
+            args.IsValid = _controller.ValidateEmail(args.Value.Trim());
         }
 
         protected void CustomUsername_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
         {
-            string username = args.Value.Trim();
-            args.IsValid = username.Length >= 3 && username.Length <= 25;
+            args.IsValid = _controller.ValidateUsername(args.Value.Trim());
         }
 
         protected void CustomPassword_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
         {
-            string password = args.Value;
-            args.IsValid = Regex.IsMatch(password, @"^[a-zA-Z0-9]{8,20}$");
+            args.IsValid = _controller.ValidatePassword(args.Value);
         }
 
         protected void CustomDOB_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
         {
             DateTime dob;
-            args.IsValid = DateTime.TryParse(args.Value, out dob) && dob < new DateTime(2010, 1, 1);
-        }
-
-        protected void btnRegister_Click(object sender, EventArgs e)
-        {
-            if (Page.IsValid)
-            {
-                using (var db = new JawelsdatabaseEntities2())
-                {
-                    var User = new MsUser
-                    {
-                        UserEmail = txtEmail.Text.Trim(),
-                        UserName = txtUsername.Text.Trim(),
-                        UserPassword = txtPassword.Text, 
-                        UserGender = rblGender.SelectedValue,
-                        UserDOB = DateTime.Parse(txtDOB.Text),
-                        UserRole = "customer"
-                    };
-                    db.MsUsers.Add(User);
-                    db.SaveChanges();
-                }
-                Response.Redirect("LoginPage.aspx");
-            }
+            args.IsValid = _controller.ValidateDOB(args.Value, out dob);
         }
     }
 }

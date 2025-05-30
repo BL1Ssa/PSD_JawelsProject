@@ -10,6 +10,7 @@
         <div>
             <h2>Register</h2>
             <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="error" />
+            <asp:Label ID="lblError" runat="server" CssClass="error" EnableViewState="false" />
 
             <table>
                 <tr>
