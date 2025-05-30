@@ -42,7 +42,7 @@ namespace jawelsdiamond_psd_project.handler
 			TransactionDetail transactionDetail = repo.getTransactionDetail(transactionId);
 			return transactionDetail;
 		}
-	}
+	
 
 
 

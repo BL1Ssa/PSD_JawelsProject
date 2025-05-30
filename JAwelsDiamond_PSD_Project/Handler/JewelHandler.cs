@@ -13,12 +13,10 @@ namespace JAwelsDiamond_PSD_Project.Handler
     public class JewelHandler
     {
         private readonly JewelRepository repo;
-        private readonly JawelsDatabaseEntities db;
 
         public JewelHandler()
         {
             repo = new JewelRepository();
-            db = new JawelsDatabaseEntities();
         }
 
         public bool ValidateReleaseYear(string yearStr)

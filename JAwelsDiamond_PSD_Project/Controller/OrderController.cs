@@ -20,51 +20,52 @@ namespace JAwelsDiamond_PSD_Project.Controller
         {
             _handler.ChangeOrderStatus(transactionId, command);
         }
-    public class OrderController
-    {
-        private orderhandler _handler = new orderhandler();
-
-        public IEnumerable<object> GetPendingOrders()
+        public class OrderController
         {
-            return _handler.GetPendingOrders();
-        }
+            private orderhandler _handler = new orderhandler();
 
-        public void ChangeOrderStatus(int transactionId, string command)
-        {
-            _handler.ChangeOrderStatus(transactionId, command);
-        }
-    }
-	public class OrderController
-	{
-        OrderHandler handler = new OrderHandler();
-
-		public void confirmPackage(int id)
-		{
-			bool exists = handler.transactionExists(id);
-			if (exists)
-			{
-				handler.confirmPackage(id);
-			}
-		}
-
-        public void rejectPackage(int id)
-        {
-            bool exists = handler.transactionExists(id);
-            if (exists)
+            public IEnumerable<object> GetPendingOrders()
             {
-                handler.rejectPackage(id);
+                return _handler.GetPendingOrders();
+            }
+
+            public void ChangeOrderStatus(int transactionId, string command)
+            {
+                _handler.ChangeOrderStatus(transactionId, command);
             }
         }
+        public class OrderController
+        {
+            OrderHandler handler = new OrderHandler();
 
-		public List<TransactionHeader> getAllTransaction(int id)
-		{
-			return handler.getAllTransactions(id);
-		}
+            public void confirmPackage(int id)
+            {
+                bool exists = handler.transactionExists(id);
+                if (exists)
+                {
+                    handler.confirmPackage(id);
+                }
+            }
 
-		public TransactionDetail getTransactionDetail(int transactionId)
-		{
-			return handler.getTransactionDetail(transactionId);
-		}
+            public void rejectPackage(int id)
+            {
+                bool exists = handler.transactionExists(id);
+                if (exists)
+                {
+                    handler.rejectPackage(id);
+                }
+            }
 
+            public List<TransactionHeader> getAllTransaction(int id)
+            {
+                return handler.getAllTransactions(id);
+            }
+
+            public TransactionDetail getTransactionDetail(int transactionId)
+            {
+                return handler.getTransactionDetail(transactionId);
+            }
+
+        }
     }
 }

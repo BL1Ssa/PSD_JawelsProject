@@ -19,7 +19,7 @@ namespace JAwelsDiamond_PSD_Project.Views
                 Response.Redirect("ErrorPage.aspx");
             }
         }
-        }
+        
 
         protected void registerbtn_Click(object sender, EventArgs e)
         {
