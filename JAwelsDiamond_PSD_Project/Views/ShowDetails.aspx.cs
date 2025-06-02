@@ -64,9 +64,9 @@ namespace JAwelsDiamond_PSD_Project.Views
             lblReleaseYear.Text = jewel.JewelReleaseYear.ToString();
 
 
-            if (Session["role"] != null)
+            if (Session["UserRole"] != null)
             {
-                string role = Session["role"].ToString();
+                string role = Session["UserRole"].ToString();
                 if (role == "admin")
                 {
                     adminActions.Visible = true;

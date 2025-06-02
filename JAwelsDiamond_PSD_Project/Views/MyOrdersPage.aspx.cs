@@ -38,7 +38,7 @@ namespace JAwelsDiamond_PSD_Project.Views
         {
             if (Session["UserID"] == null || Session["UserRole"] as string != "customer")
             {
-                Response.Redirect("~/Views/LoginPage.aspx");
+                Response.Redirect("~/Views/HomePage.aspx");
                 return;
             }
             else

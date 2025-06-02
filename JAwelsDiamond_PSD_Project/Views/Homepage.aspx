@@ -5,13 +5,13 @@
 
     <asp:Repeater ID="rptJewel" runat="server">
         <ItemTemplate>
-            <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+<%--            <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
                 <strong>Jewel ID:</strong> <%# Eval("JewelID") %>
                 <br />
                 <strong>Name:</strong> <%# Eval("JewelName") %>
                 <br />
                 <strong>Price:</strong> $<%# Eval("JewelPrice") %><br /><a href='<%# "ShowDetails.aspx?id=" + Eval("JewelID") %>'>View Details</a>
-            </div>
+            </div>--%>
             <div>
                 <h3><%# Eval("JewelName") %></h3>
                 <p>Price: <%# Eval("JewelPrice") %></p>

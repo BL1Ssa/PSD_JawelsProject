@@ -13,7 +13,7 @@ namespace JAwelsDiamond_PSD_Project.Views
         {
             if (Session["UserRole"] == null || Session["UserRole"].ToString() != "admin")
             {
-                Response.Redirect("ErrorPage.aspx");
+                Response.Redirect("HomePage.aspx");
             }
 
             if (!IsPostBack)

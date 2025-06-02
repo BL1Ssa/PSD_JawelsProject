@@ -17,6 +17,10 @@ namespace JAwelsDiamond_PSD_Project.Views
         {
             if (!IsPostBack)
             {
+                if (Session["UserID"] == null)
+                {
+                    Response.Redirect("~/Views/HomePage.aspx");
+                }
                 int id = int.Parse(Request.QueryString["id"]);
                 TransactionDetail td = controller.getTransactionDetail(id);
 
