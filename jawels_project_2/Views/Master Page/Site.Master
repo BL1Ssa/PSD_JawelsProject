@@ -1,0 +1,46 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="jawels_project_2.Views.Master_Page.Site" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>JAwels & Diamonds</title>
+    <style>
+        .navbar a {
+            margin-right: 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="navbar">
+            <asp:Panel ID="pnlGuest" runat="server" Visible="false">
+                <a href="HomePage.aspx">Home</a>
+                <a href="LoginPage.aspx">Login</a>
+                <a href="RegisterPage.aspx">Register</a>
+            </asp:Panel>
+
+            <asp:Panel ID="pnlCustomer" runat="server" Visible="false">
+                <a href="HomePage.aspx">Home</a>
+                <a href="Cart.aspx">Cart</a>
+                <a href="MyOrdersPage.aspx">My Orders</a>
+                <a href="ProfilePage.aspx">Profile</a>
+                <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click">Logout</asp:LinkButton>
+                <asp:Label ID="lblUserCustomer" runat="server" />
+            </asp:Panel>
+
+            <asp:Panel ID="pnlAdmin" runat="server" Visible="false">
+                <a href="HomePage.aspx">Home</a>
+                <a href="AddJewel.aspx">Add Jewel</a>
+                <a href="ReportPage.aspx">Reports</a>
+                <a href="HandleOrders.aspx">Handle Orders</a>
+                <a href="ProfilePage.aspx">Profile</a>
+                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="btnLogout_Click">Logout</asp:LinkButton>
+                <asp:Label ID="lblUserAdmin" runat="server" />
+            </asp:Panel>
+        </div>
+
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    </form>
+</body>
+</html>
